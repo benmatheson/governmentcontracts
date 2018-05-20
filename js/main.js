@@ -20,7 +20,7 @@ var map0 = new mapboxgl.Map({
   // style: 'mapbox://styles/benmatheson/cjh2yaf301jjm2sru7r1uz7n7',
 
   
- center: [-108, 40],
+ center: [-100, 40],
   zoom: 3.7,
 
 //   "transition": {
@@ -141,7 +141,7 @@ var map = new mapboxgl.Map({
 
   "pitch": 0,
 
-  center: [-108, 40],
+ center: [-100, 40],
   zoom: 3.7,
 //   "transition": {
 //   "duration": 800,
@@ -382,6 +382,114 @@ createDot("#vendorDot5", mc)
 
 
 
+///////////PRODUCT DOT
+
+d3.csv("data/top100ProductOutput.csv", function(data3){
+
+
+data3.forEach(function (d){
+
+  d.dollars_obligated = +d.dollars_obligated;
+
+  })
+
+
+const aircraft = data3.filter(d=>d.product_or_service_code =="1510: AIRCRAFT, FIXED WING");
+const support = data3.filter(d=>d.product_or_service_code=="R425: SUPPORT- PROFESSIONAL: ENGINEERING/TECHNICAL");
+const oper = data3.filter(d=>d.product_or_service_code=="M181: OPER OF GOVT R&D GOCO FACILITIES");
+const medical = data3.filter(d=>d.product_or_service_code=="Q201: MEDICAL- GENERAL HEALTH CARE");
+const combat = data3.filter(d=>d.product_or_service_code=="1905: COMBAT SHIPS AND LANDING VESSELS");
+
+
+
+
+function createDot (el, data) {
+
+
+const vendorDotsvg =  d3.select(el)
+                        .append('svg')
+                        .attr("width", 1100)
+                        .attr ("height", 140);
+
+const vendorDotG = vendorDotsvg.append('g');
+
+
+vendorDotsvg.selectAll('circle')
+  .data(data)
+  .enter()
+  .append('rect')
+  .attr("x", d=> dotX(d.dollars_obligated))
+  .attr("y", 37)
+  .attr("width", 6)
+  .attr("height", 14)
+  .attr("opacity", .4)
+  .attr("stroke-width", .3)
+  .attr("fill", function(d){
+    return d.beltwayMetro == "inBeltway" ? "red" : "lightblue"
+
+  });
+
+vendorDotsvg.append('text')
+    
+    .attr("x", 3)
+    .attr("y", 19)
+    .text((data[1].product_or_service_code).toLowerCase())
+    .attr("class", "anno")
+
+
+
+vendorDotsvg.append('text')
+    
+    .attr("y", 65)
+    .attr("x",  dotX(1000000))
+    .text("$1 million" )
+    .attr("class", "annoItal")
+
+
+
+vendorDotsvg.append('text')
+    
+    .attr("y", 65)
+    .attr("x", dotX(100000000))
+    .text("$100 million" )
+    .attr("class", "annoItal")
+
+
+
+vendorDotsvg.append('text')
+    
+    .attr("y", 65)
+    .attr("x",  dotX(400000000))
+    .text("$500 million" )
+    .attr("class", "annoItal")
+
+
+
+
+
+}
+
+
+
+
+
+
+
+createDot("#productDot1", aircraft)
+createDot("#productDot2", support)
+createDot("#productDot3", oper)
+createDot("#productDot4", medical)
+createDot("#productDot5", combat)
+
+
+})
+
+
+
+
+////////////////////
+
+
 
 
 
@@ -423,7 +531,7 @@ const beltPercentX = d3.scaleLinear().range([0,1100]).domain([0,239955928306.92]
 
 var first = beltPercentGSelect
   .append('rect')
-    .attr('x', 0)
+    .attr('x', 20)
     .attr('y', (d,y) =>y*25)
     .attr('height', 22)
     .attr("width", d=>beltPercentX(d.total))
@@ -440,7 +548,7 @@ var first = beltPercentGSelect
 
  beltPercentGSelect
   .append('rect')
-    .attr("x", 0)
+    .attr("x", 20)
     .attr('y', (d,i) =>i*25)
     .attr('height', 22)
     .attr("width", d=>beltPercentX(d.total)*d.metroBeltPercent)

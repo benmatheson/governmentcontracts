@@ -107,6 +107,32 @@ body {
 
 }
 
+h1{
+font-family: "IBM Plex Sans", sans-serif;
+}
+
+
+.mapHeader {
+
+    color: whitesmoke;
+    position: absolute;
+    font-size: 2rem;
+left: 36%;
+top: 10%;
+z-index: 100;
+line-height: 112%;
+
+opacity: .8;
+font-family: "IBM Plex Sans", sans-serif;
+
+}
+
+#beltPercent{
+
+    background-color: white;
+
+
+}
 .center {
 
 margin: auto;
@@ -275,7 +301,7 @@ justify-content: center;
     /*border: dashed gray;*/
     margin:auto;
     left: 10%;
-    width: 300px;
+    width: 200px;
     height: 50px;
     background-color:whitesmoke;
     color: black;
@@ -295,7 +321,7 @@ justify-content: center;
 
     color: whitesmoke;
   background-color:#333333;
-  width: 310px;
+  width: 210px;
 
 }
 
