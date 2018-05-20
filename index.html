@@ -1,0 +1,130 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/d3/d3.min.js"></script>
+
+                <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+
+                <!-- <script src="js/vendor/d3/d3.min.js"></script> -->
+ <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+
+
+
+
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <img class="centerMin" src="img/dc.png">
+
+        <h1 class="header centerMin">Beltway <br /><br />Spending</h1>
+        <h2 class="subHeader">Where does the goverment spend money?</h2>
+        <p class="center">The government spends billions of dollars per year on a dizzying array of items: office furniture, cloud computing, breakfast cereal, and advanced weapons systems are among destinations of taxpayer funds. We also spend deeply on expertise and services across a range of domains. Well-heeled industries have risen to meet this need and fulfill large contracts. Local companies compete with the Beltway professionals to help the U.S. government build, feed, transport, clothe and otherwise equip operations across all 50 states and territories. Where do the beltway firms execute their work? How do the contracts differ from regional and small-town operators?
+</p>
+
+<div class="panel">
+<div id="vendorDot1"></div>
+<div id="vendorDot2"></div>
+<div id="vendorDot3"></div>
+<div id="vendorDot4"></div>
+<div id="vendorDot5"></div>
+
+
+</div>
+<div class= "map" id="map0">
+
+
+
+ <div class="buttonFlex">
+<div class="deptButton" onclick="toggleDotStyle('mapbox://styles/benmatheson/cjhebfhpm2se32rozggixu3np')">Department of Homeland Security</div>
+<div class="deptButton" onclick="toggleDotStyle('mapbox://styles/benmatheson/cjhebfbj02t7z2rs4ewk2kylh')">Department of Veterans Affairs</div>
+
+
+
+<div class="deptButton" onclick="toggleDotStyle('mapbox://styles/benmatheson/cjhcu2hpg1bhd2spnlx6sdxeo')">Department of Defense</div>
+
+</div>
+
+
+</div>
+
+
+<div class= "map" id="map1">
+    
+ 
+ <div class="buttonFlex">
+<div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhdzkp2p2gld2sp4d2syfvld')">Department of the Interior</div>
+<div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhe0d4xe2h652srsc44e3avt')">Department of Energy</div>
+
+
+
+<div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhe0ml0k2ine2sqciajtp5lp')">Department of Agriculture</div>
+<div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhcx9p8f1gmp2srs3jzhgcu3')">Department of the Navy</div>
+</div>
+
+
+
+
+<!-- <div class="dropdown">
+  <button class="dropbtn">Agency</button>
+  <div class="dropdown-content">
+    <a href="#">Navy</a>
+    <a href="#">Department of Interior</a>
+    <a href="#">Department of Agriculture</a>
+    <a href="#">Energy</a> 
+  
+  </div>
+
+
+
+
+
+</div>  
+ -->
+</div>
+
+<div class="panel">
+    <p class="center white">a long section about methedology</p>
+<div id="beltPercent"></div>
+
+
+
+</div>
+
+<div class="panel">
+    <p class="center white">This analysis uses published on the Enigma Open Data platform. Goverment contracts greater than $1 million.</p>
+</div>
+       <!--  <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script> -->
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/textures@1.2.0/dist/textures.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+     <!--    <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
+
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i" rel="stylesheet">
+
+    </body>
+</html>
