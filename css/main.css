@@ -218,7 +218,7 @@ img.centerMin {
 
 .header {
 
-font-family: "IBM Plex Mono", sans-serif;
+font-family: "IBM Plex Sans", sans-serif;
 /*position: absolute;*/
 /*top: 10%;*/
 /*width:80%;*/
@@ -229,7 +229,7 @@ text-align: center;
 /*text-decoration: underline;*/
 /*text-decoration-line: red;*/
 line-height: 40%;
-font-size: 9rem;
+font-size: 8rem;
 font-weight: 900;
 margin: auto;
 min-width: 100%;
@@ -253,7 +253,7 @@ font-weight: 400;
 font-family: "IBM Plex Serif";
 font-style: italic;
 margin-bottom: 2%;
-margin-top: 2%;
+margin-top: 5%;
 
 color: whitesmoke;
 

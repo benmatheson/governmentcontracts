@@ -572,6 +572,85 @@ var first = beltPercentGSelect
 
 
 
+d3.csv("data/gcGroupMetroBeltway.csv", function (data2) {
+
+  data2.forEach(function(d){
+d.total =+d.total;
+d.metroBeltPercent =+d.metroBeltPercent
+
+  })
+
+
+data2.sort(function (a,b) {return (b.total-a.total)})
+
+// ag = data2.filter(d=>d.maj_fund_agency_cat =="1200: Department of Agriculture")
+// vet = data2.filter(d=>d.maj_fund_agency_cat =="3600: Department of Veterans Affairs")
+
+
+const beltPercentX = d3.scaleLinear().range([0,10000]).domain([0,239955928306.92])
+
+
+
+
+
+  const beltPercent = d3.select('#beltCircle').append('svg')
+    .attr('height', 2000)
+    .attr('width', 1100)
+
+
+  const beltPercentG = beltPercent.append('g');
+
+  const beltPercentGSelect = 
+    
+    beltPercentG
+    .selectAll('circle')
+    .data(data2)
+    .enter()
+
+var first = beltPercentGSelect
+  .append('circle')
+    .attr('cx', 400)
+    .attr('cy', (d,y) =>y*75+150)
+    .attr("r", d=>Math.sqrt(beltPercentX(d.total)))
+    .attr("stroke-width", 22)
+    .attr("stroke-color", "red")
+    .attr("fill", "purple")
+    .attr("opacity", .3)
+
+
+// var t = textures.lines()
+//   .thicker();
+
+//  first.call(t)
+//   .style("fill", t.url());
+
+
+
+ beltPercentGSelect
+  .append('circle')
+    .attr("cx", 400)
+    .attr('cy', (d,i) =>i*75+150)
+    .attr("r", d=>Math.sqrt(beltPercentX(d.total)*d.metroBeltPercent))
+    .attr("fill", "lightpink")
+.attr("opacity", .3)
+
+
+beltPercentGSelect
+  .append('text')
+    .attr("x", 500)
+    .attr('y', (d,i) =>i*75+150)
+        .text( d=>d.maj_fund_agency_cat)
+        .attr("class", "annoItal")
+        .style("fill", "white")
+
+
+
+
+
+})
+
+
+
 
 
 
