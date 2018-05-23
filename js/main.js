@@ -1,6 +1,285 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmVubWF0aGVzb24iLCJhIjoiY2lmZDhyZXVxNTI5eHNtbHgyOTYwbHJtMyJ9.Ch8JQXvunpUrv6tGpeJMCA'
 
 
+console.log(top5Contracts);
+
+var gc1 = './data/ny.geojson';
+var navy = './data/navy.geojson';
+var navyLine = './data/navyLine.geojson';
+// var congressShape = './data/congressFull.geojson';
+
+
+// var congressShape = './data/congressFullParse.geojson';
+
+
+var congressShape = './data/congressFullParse.json';
+
+const circleSvg =  d3.select('#circleDiv')
+                        .append('svg')
+                        .attr("width", 200)
+                        .attr ("height", 200);
+
+
+const circleSvgG = circleSvg.append('g');
+
+
+
+var mapC = new mapboxgl.Map({
+  container: 'mapC',
+  // style: 'mapbox://styles/mapbox/light-v9',
+  style: 'mapbox://styles/mapbox/dark-v9',
+  // style: 'mapbox://styles/benmatheson/cjhcx9p8f1gmp2srs3jzhgcu3',
+  // style: 'mapbox://styles/benmatheson/cjhcu2hpg1bhd2spnlx6sdxeo',
+  // style: 'mapbox://styles/benmatheson/cjhebfhpm2se32rozggixu3np',
+
+"pitch": 0,
+
+"transition": {
+  "duration": 1300,
+  "delay": 0
+},
+  // style: 'mapbox://styles/benmatheson/cjh2yaf301jjm2sru7r1uz7n7',
+
+  
+ center: [-106, 40],
+  zoom: 3.6,
+
+//   "transition": {
+//   "duration": 800,
+//   "delay": 0
+// }
+})
+
+
+
+mapC.on('load', function() {
+
+
+mapC.addSource('gcC', {
+  type: 'geojson',
+  // data: 'https://rawgit.com/benmatheson/2011_test/master/ras_ak_red.geojson'
+  data: congressShape
+});
+
+
+
+
+
+       
+
+
+  mapC.addLayer({
+        "id": "gcC",
+        "type": "fill",
+      "source": "gcC",
+
+    'paint': {
+           
+           // "line-color": "rgba(100,200,100,.5)"
+
+
+            'fill-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'val'],
+                1000000, '#454A62',
+                80000000, '#6B5674',
+                100000000, '#94607F',
+                500000000, '#E27880', 
+                11618722504, '#ffbb7c'
+            ],   
+            'fill-opacity': 0.5
+            }
+  
+
+
+      
+
+      })
+
+
+
+
+
+  // map0.addLayer({
+  //       "id": "navyLine",
+  //       "type": "line",
+  //     "source": "navyLine",
+
+  //   'paint': {
+           
+  //          "line-color": "rgba(200,100,100,.05)",
+  //           'line-width': 3,
+  //           }
+  
+
+  //     })
+
+
+
+
+  // map0.addLayer({
+  //       "id": "navy",
+  //       "type": "circle",
+  //     "source": "navy",
+
+  //   'paint': {
+           
+  //          "circle-color": "rgba(100,200,200,.1)"
+  //           }
+  
+
+  //     })
+
+
+
+
+    // Create a popup, but don't add it to the map yet.
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+
+mapC.on('mousemove', 'gcC', function(e) {
+        // Change the cursor style as a UI indicator.
+        mapC.getCanvas().style.cursor = 'pointer';
+
+
+
+        // console.log(e.features[0].geometry.coordinates);
+        var coordinates = e.features[0].geometry.coordinates[0][0].slice();
+        var mouse = e.lngLat;
+
+        var district = e.features[0].properties.gcplace_of_performance_congressional_district;
+        var percent = e.features[0].properties.gcmetroBeltSpendPercent;
+
+        var value = e.features[0].properties.val;
+        var numContracts = e.features[0].properties.gcpTotalContracts;
+
+
+var top1 = top5Contracts.filter(d=>d.place_of_performance_congressional_district==district)[0]
+var top1Vendor = top1.vendor_name;
+var top1Description = top1.description_of_contract_requirement;
+console.log("top1");
+console.log(top1);
+
+
+
+
+
+
+
+        var popContent = `<div class="pop"><h3>Disrtict: </h3>
+            ${district}
+                <h3>Value of Contracts: </h3>$${(value.toFixed)(2).toLocaleString()}</div>
+                <h3>Number of Contracts Above $1 million: </h3>${numContracts}</div>
+                <h3>Percent Based in Beltway: </h3>${parseFloat(percent).toFixed(2)}%</div>`
+
+        var sideContent = `<h4>District: </h4><p>${district}</p>
+                <h4>Value of Contracts: </h4><p> $${(value.toFixed)(2).toLocaleString()}</p>
+                <h4>Contracts Above $1 million: </h4><p>${numContracts}</p>
+                <h4>Percent Based in Beltway: </h4><p>${parseFloat(percent).toFixed(2)}%</p>
+                <h4>Top Contract: </h4><p>${top1Vendor}</p>
+                <h4>Description: </h4><p>${top1Description}</p>`
+
+
+
+
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        // popup.setLngLat(coordinates)
+        popup.setLngLat(mouse)
+            .setHTML(popContent)
+            .addTo(mapC);
+
+          document.getElementById('sidePanelText').innerHTML = sideContent;
+          document.getElementById('initial').innerHTML = null;
+
+
+
+const circleX = d3.scaleLinear().domain([0,1000]).range([4,150]);
+
+
+
+
+
+console.log("circle data");
+console.log(circleData)
+
+
+var circleData = [];
+
+
+circleSvgG.selectAll('circle')
+  .data(circleData)
+  .exit()
+  .remove();
+
+
+circleData.push(e.features[0].properties.gcpTotalContracts);
+
+
+
+circleSvgG.selectAll('circle')
+  .data(circleData)
+  .enter()
+  .append('circle')
+  .attr("cx", 100)
+  .attr("cy", 100)
+  .attr("r", d=> circleX(d))
+  .attr("opacity", .5)
+  .attr("fill", "none")
+  .attr("stroke", "red")
+  .attr("stroke-width", 2)
+
+
+
+
+    });
+
+    mapC.on('mouseleave', 'gcC', function() {
+        mapC.getCanvas().style.cursor = '';
+        popup.remove();
+
+
+
+    });
+
+
+
+
+
+
+
+        })
+
+      //       // "icon-image": "{icon}-11",
+      //       // "text-field": "{title}",
+      //       "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+      //       "text-offset": [0, 0.6],
+      //       "text-anchor": "top"
+      //   }
+  
+mapC.scrollZoom.disable();
+
+
+
+
+
+
+
+
+
+
 
 
 var map0 = new mapboxgl.Map({
@@ -30,9 +309,7 @@ var map0 = new mapboxgl.Map({
 });
 
 // var red = './data/ras_ak_red.geojson';
-var gc1 = './data/ny.geojson';
-var navy = './data/navy.geojson';
-var navyLine = './data/navyLine.geojson';
+
 // var ak_simple_fake = './data/alaska_simplified_fake.geojson';
 
 map0.on('load', function() {

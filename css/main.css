@@ -111,6 +111,14 @@ h1{
 font-family: "IBM Plex Sans", sans-serif;
 }
 
+h1{
+font-family: "Signika", sans-serif;
+font-family: "IBM Plex Sans", sans-serif;
+
+line-height: 100%;
+font-size: 2.3rem;
+}
+
 
 .mapHeader {
 
@@ -324,6 +332,79 @@ justify-content: center;
   width: 210px;
 
 }
+
+.sidePanel {
+
+
+position: absolute;
+top: 0%;
+left: 0%;
+
+/*    position: relative;
+    display: inline;*/
+    z-index: 100;
+    /*border: dashed gray;*/
+    margin:auto;
+    width: 300px;
+    height: 100vh;
+    background-color:rgba(33,33,33,.3);
+    color: whitesmoke;
+/*
+    color:rgba(0,0,0,.8);
+    background-color: rgba(255,255,255,.8);
+*/
+
+    font-weight: 900;
+    font-family: "Signika", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+
+    line-height: 100%;
+    border-radius: 4px;
+    padding: 2%;
+    margin: 4px;
+    font-size: 1.3rem;
+    transition: all .5s ease;
+    /*text-align: center;*/
+
+}   
+
+.sidePanel p {
+
+    font-family: "Signika", sans-serif;
+        font-family: "IBM Plex Mono", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 200;
+    /*display: inline;*/
+    padding-left: 10%;
+    margin-bottom: 4px;
+    /*margin: 1%;*/
+
+
+
+}
+
+
+.sidePanel h4 {
+
+  margin-bottom: 4px;
+  display: inline;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .anno{
