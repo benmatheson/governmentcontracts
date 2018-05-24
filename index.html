@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/d3/d3.min.js"></script>
         <script type="text/javascript" src="data/top5Contracts.json"></script>
+        <script type="text/javascript" src="data/top5Agency.json"></script>
 
 
                 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
@@ -36,11 +37,22 @@
         <div class= "map" id="mapC">
 
 
-            <div class="sidePanel"> <h1> Contracts By House District</h1>
+            <div class="sidePanel"> 
+                <!-- <h1> Contracts By House District</h1> -->
                 <p id="initial"><i>hover over a district to learn more</i></p>
-                <div id="sidePanelText"></div>
-                <div id="circleDiv"></div>
+                <div id="sidePanelText">
+                    
+                </div>
+
+
             </div>
+
+            <div class="bottomPanel">   
+
+                <div id="circleDiv"></div> 
+                <div id="barDiv"></div>
+
+</div>
 
 </div>
 

@@ -24,6 +24,24 @@ const circleSvgG = circleSvg.append('g');
 
 
 
+/////BAR SVG 
+
+
+const barSvg =  d3.select('#barDiv')
+                        .append('svg')
+                        .attr("width", 600)
+                        .attr ("height", 200);
+
+
+const barSvgG = barSvg.append('g');
+
+
+
+
+
+
+
+
 var mapC = new mapboxgl.Map({
   container: 'mapC',
   // style: 'mapbox://styles/mapbox/light-v9',
@@ -98,6 +116,40 @@ mapC.addSource('gcC', {
       })
 
 
+  mapC.addLayer({
+        "id": "gcCHover",
+        "type": "fill",
+      "source": "gcC",
+
+    'paint': {
+           
+           // "line-color": "rgba(100,200,100,.5)"
+
+            'fill-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'val'],
+                1000000, '#454A62',
+                80000000, '#6B5674',
+                100000000, '#94607F',
+                500000000, '#E27880', 
+                11618722504, '#ffbb7c'
+
+            ],    
+             'fill-outline-color': "#ffffff",   
+            'fill-opacity': .5
+            },
+
+            "filter": ["==", "gcplace_of_performance_congressional_district", ""]
+
+  
+
+
+      
+
+      });
+
+
 
 
 
@@ -140,6 +192,16 @@ mapC.addSource('gcC', {
         closeOnClick: false
     });
 
+mapC.on('mousemove', "gcC", function(e) {
+
+
+  console.log("NAME");
+  console.log(e.features[0].properties.gcplace_of_performance_congressional_district);
+        mapC.setFilter("gcCHover", ["==", "gcplace_of_performance_congressional_district", e.features[0].properties.gcplace_of_performance_congressional_district]);
+
+
+
+})
 
 mapC.on('mousemove', 'gcC', function(e) {
         // Change the cursor style as a UI indicator.
@@ -152,7 +214,7 @@ mapC.on('mousemove', 'gcC', function(e) {
         var mouse = e.lngLat;
 
         var district = e.features[0].properties.gcplace_of_performance_congressional_district;
-        var percent = e.features[0].properties.gcmetroBeltSpendPercent;
+        var percent = e.features[0].properties.gcbeltwayContractCountPercent*100;
 
         var value = e.features[0].properties.val;
         var numContracts = e.features[0].properties.gcpTotalContracts;
@@ -170,18 +232,20 @@ console.log(top1);
 
 
 
-        var popContent = `<div class="pop"><h3>Disrtict: </h3>
+        var popContent = `<div class="pop"><h3>District: </h3>
             ${district}
-                <h3>Value of Contracts: </h3>$${(value.toFixed)(2).toLocaleString()}</div>
+                <h3>Value of Contracts: </h3>$${((value)/1000000).toFixed(2)} million</div>
                 <h3>Number of Contracts Above $1 million: </h3>${numContracts}</div>
                 <h3>Percent Based in Beltway: </h3>${parseFloat(percent).toFixed(2)}%</div>`
 
-        var sideContent = `<h4>District: </h4><p>${district}</p>
-                <h4>Value of Contracts: </h4><p> $${(value.toFixed)(2).toLocaleString()}</p>
-                <h4>Contracts Above $1 million: </h4><p>${numContracts}</p>
-                <h4>Percent Based in Beltway: </h4><p>${parseFloat(percent).toFixed(2)}%</p>
-                <h4>Top Contract: </h4><p>${top1Vendor}</p>
-                <h4>Description: </h4><p>${top1Description}</p>`
+        var sideContent = `<div class="panelFlex">
+
+                <div class="sideItem"><h4>District: </h4><p>${district}</p></div>
+                <div class="sideItem"><h4>Contract Value (millions): </h4><p> $${((value)/1000000).toFixed(2)}</p></div>
+                <div class="sideItem"><h4>Contracts > $1 million: </h4><p>${numContracts}</p></div>
+                <div class="sideItem"><h4>Percent Based in Beltway: </h4><p>${parseFloat(percent).toFixed(2)}%</p></div>
+                <div class="sideItem"><h4>Top Contract Vendor: </h4><p class="small">${top1Vendor}</p></div>
+                <div class="sideItem"><h4>Description: </h4><p class="small">${top1Description}</p></div></div>`
 
 
 
@@ -199,7 +263,7 @@ console.log(top1);
         // popup.setLngLat(coordinates)
         popup.setLngLat(mouse)
             .setHTML(popContent)
-            .addTo(mapC);
+            // .addTo(mapC);
 
           document.getElementById('sidePanelText').innerHTML = sideContent;
           document.getElementById('initial').innerHTML = null;
@@ -233,13 +297,106 @@ circleSvgG.selectAll('circle')
   .data(circleData)
   .enter()
   .append('circle')
-  .attr("cx", 100)
-  .attr("cy", 100)
+  .attr("cx", 50)
+  .attr("cy", 50)
   .attr("r", d=> circleX(d))
   .attr("opacity", .5)
   .attr("fill", "none")
   .attr("stroke", "red")
   .attr("stroke-width", 2)
+
+
+
+
+
+
+
+////////////////BAR CHART ////////////////////////////
+
+
+const barX = d3.scaleLinear().domain([1000000,10445364770]).range([0,600]);
+
+
+
+console.log("BARX");
+console.log(barX(10000000));
+
+
+var barData = [];
+
+
+barSvgG.selectAll('rect')
+  .data(barData)
+  .exit()
+  .remove();
+
+
+
+barSvgG.selectAll('text')
+  .data(barData)
+  .exit()
+  .remove();
+
+
+
+
+var currentDistrict = e.features[0].properties.gcplace_of_performance_congressional_district;
+var currentData = top5Agency.filter(ag => ag.district == currentDistrict);
+
+
+console.log("cd");
+console.log(currentDistrict);
+console.log(currentData);
+
+
+
+barData.push(currentData);
+barData.sort((a,b)=>a.agencySum-b.agencySum)
+// barData.d3.descending(a.agencySum, b.agencySum)
+
+console.log("BARDATA");
+console.log(barData);
+
+
+
+barSvgG.selectAll('rect')
+  .data(barData[0])
+  .enter()
+  .append('rect')
+  .attr("x", 50)
+  .attr("y", (d,i)=>i*22+40)
+  .attr("height", 20)
+  .attr("width", d=> barX(d.agencySum))
+  .attr("opacity", .9)
+  .attr("fill", "whitesmoke")
+
+
+
+
+barSvgG.selectAll('text')
+  .data(barData[0])
+  .enter()
+  .append('text')
+  .attr("x", 10)
+  .attr("y", (d,i)=>i*22+50)
+  .text(d=>d.majAgency)
+  .attr('class', "barAnno")
+
+
+
+
+
+  // .attr("stroke-width", 2)
+
+
+
+
+
+
+
+
+///////////////////END BAR CHART ///////////////////////////
+
 
 
 

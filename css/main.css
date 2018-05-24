@@ -338,15 +338,105 @@ justify-content: center;
 
 position: absolute;
 top: 0%;
-left: 0%;
+left: 4%;
 
 /*    position: relative;
     display: inline;*/
     z-index: 100;
     /*border: dashed gray;*/
     margin:auto;
-    width: 300px;
-    height: 100vh;
+    width: 30%;
+    height: 99vh;
+    background-color:rgba(33,33,33,.3);
+    color: whitesmoke;
+/*
+    color:rgba(0,0,0,.8);
+    background-color: rgba(255,255,255,.8);
+*/
+
+    font-weight: 400;
+    font-family: "Signika", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+
+    line-height: 100%;
+    border-radius: 4px;
+    padding: 2%;
+    margin: 4px;
+    font-size: 1.3rem;
+    transition: all .5s ease;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.2);
+    /*text-align: center;*/
+
+}   
+
+.sidePanel p {
+
+    font-family: "Signika", sans-serif;
+        /*font-family: "IBM Plex Mono", sans-serif;*/
+    font-size: 2.5rem;
+    font-weight: 800;
+    /*display: inline;*/
+    padding-left: 10%;
+    margin-bottom: 4px;
+        transition: all .5s ease;
+
+    /*margin: 1%;*/
+
+
+
+}
+
+
+.sidePanel p.small {
+
+    font-size: .8rem;
+
+}
+
+.sidePanel h4 {
+
+  margin-bottom: 4px;
+  display: inline;
+  font-size: 1rem;
+
+
+
+}
+
+
+.panelFlex {
+
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+justify-content: top;
+flex-wrap: wrap;
+
+}
+
+
+.sideItem {
+
+width: 50%;
+margin-bottom: 9%;
+/*border: dashed gray .2px;*/
+/*margin: 0;*/
+}
+
+.bottomPanel {
+
+
+position: absolute;
+bottom: 0px;
+left: 34%;
+
+/*    position: relative;
+    display: inline;*/
+    z-index: 100;
+    /*border: dashed gray;*/
+    /*margin:auto;*/
+    width: 50%;
+    height: 25vh;
     background-color:rgba(33,33,33,.3);
     color: whitesmoke;
 /*
@@ -364,38 +454,22 @@ left: 0%;
     margin: 4px;
     font-size: 1.3rem;
     transition: all .5s ease;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.2);
     /*text-align: center;*/
+    display: flex;
 
 }   
 
-.sidePanel p {
-
-    font-family: "Signika", sans-serif;
-        font-family: "IBM Plex Mono", sans-serif;
-    font-size: 1.1rem;
-    font-weight: 200;
-    /*display: inline;*/
-    padding-left: 10%;
-    margin-bottom: 4px;
-    /*margin: 1%;*/
 
 
+.barAnno{
+
+        font-size: 12px;
+        color: whitesmoke;
+    font-weight: 400;
+    font-family: "IBM Plex Sans", sans-serif;
 
 }
-
-
-.sidePanel h4 {
-
-  margin-bottom: 4px;
-  display: inline;
-
-
-
-}
-
-
-
-
 
 
 
@@ -435,7 +509,7 @@ left: 0%;
         top: 0;
         /*bottom: 0;*/
         width: 100%;
-        min-height: 90vh;
+        min-height: 100vh;
         margin:auto;
         margin-bottom: 2%;
 
