@@ -29,7 +29,7 @@ const circleSvgG = circleSvg.append('g');
 
 const barSvg =  d3.select('#barDiv')
                         .append('svg')
-                        .attr("width", 600)
+                        .attr("width", 1000)
                         .attr ("height", 200);
 
 
@@ -106,7 +106,23 @@ mapC.addSource('gcC', {
                 500000000, '#E27880', 
                 11618722504, '#ffbb7c'
             ],   
-            'fill-opacity': 0.5
+
+              'fill-color': [
+                          'interpolate',
+                          ['linear'],
+                          ['get', 'val'],
+                          1000000, '#453B51',
+                         500000000, '#5F5471',
+                        1000000000, '#7A6D92',
+                        2000000000, '#9688B5',
+                        5000000000, '#B2A4D9', 
+                       11618722504, '#CFC1FE'
+                      ],   
+
+
+
+
+            'fill-opacity': 0.8
             }
   
 
@@ -186,6 +202,19 @@ mapC.addSource('gcC', {
 
 
 
+
+
+mapC.flyTo({
+
+  center: [
+            -78,39
+           ],
+  zoom: 5.5,
+          speed: 0.5, // make the flying slow
+        curve: 1, // change the speed at which it zooms out
+
+})
+
     // Create a popup, but don't add it to the map yet.
     var popup = new mapboxgl.Popup({
         closeButton: false,
@@ -221,8 +250,11 @@ mapC.on('mousemove', 'gcC', function(e) {
 
 
 var top1 = top5Contracts.filter(d=>d.place_of_performance_congressional_district==district)[0]
-var top1Vendor = top1.vendor_name;
-var top1Description = top1.description_of_contract_requirement;
+var top1Vendor = top1.vendor_name.toLowerCase() ;
+var top1Agency = top1.mod_agency.substring(6) ;
+var top1VLocation = top1.vLocation ;
+
+var top1Description = top1.description_of_contract_requirement.toLowerCase() ;
 console.log("top1");
 console.log(top1);
 
@@ -244,7 +276,9 @@ console.log(top1);
                 <div class="sideItem"><h4>Contract Value (millions): </h4><p> $${((value)/1000000).toFixed(2)}</p></div>
                 <div class="sideItem"><h4>Contracts > $1 million: </h4><p>${numContracts}</p></div>
                 <div class="sideItem"><h4>Percent Based in Beltway: </h4><p>${parseFloat(percent).toFixed(2)}%</p></div>
-                <div class="sideItem"><h4>Top Contract Vendor: </h4><p class="small">${top1Vendor}</p></div>
+                <div class="sideItem"><h4>Largest Contract Vendor: </h4><p class="small">${top1Vendor}</p></div>
+                <div class="sideItem"><h4>Largest Contract Agency: </h4><p class="small">${top1Agency}</p></div>
+                <div class="sideItem"><h4>Largest Contract Location: </h4><p class="small">${top1VLocation}</p></div>
                 <div class="sideItem"><h4>Description: </h4><p class="small">${top1Description}</p></div></div>`
 
 
@@ -267,6 +301,9 @@ console.log(top1);
 
           document.getElementById('sidePanelText').innerHTML = sideContent;
           document.getElementById('initial').innerHTML = null;
+
+
+
 
 
 
@@ -302,7 +339,7 @@ circleSvgG.selectAll('circle')
   .attr("r", d=> circleX(d))
   .attr("opacity", .5)
   .attr("fill", "none")
-  .attr("stroke", "red")
+  .attr("stroke", "whitesmoke")
   .attr("stroke-width", 2)
 
 
@@ -314,7 +351,7 @@ circleSvgG.selectAll('circle')
 ////////////////BAR CHART ////////////////////////////
 
 
-const barX = d3.scaleLinear().domain([1000000,10445364770]).range([0,600]);
+const barX = d3.scaleLinear().domain([1000000,10445364770]).range([0,1000]);
 
 
 
@@ -351,7 +388,9 @@ console.log(currentData);
 
 
 barData.push(currentData);
-barData.sort((a,b)=>a.agencySum-b.agencySum)
+barData[0].sort((a,b)=>b.agencySum-a.agencySum)
+console.log("sorted data");
+console.log(barData);
 // barData.d3.descending(a.agencySum, b.agencySum)
 
 console.log("BARDATA");
@@ -363,7 +402,7 @@ barSvgG.selectAll('rect')
   .data(barData[0])
   .enter()
   .append('rect')
-  .attr("x", 50)
+  .attr("x", 210)
   .attr("y", (d,i)=>i*22+40)
   .attr("height", 20)
   .attr("width", d=> barX(d.agencySum))
@@ -377,12 +416,26 @@ barSvgG.selectAll('text')
   .data(barData[0])
   .enter()
   .append('text')
-  .attr("x", 10)
+  .attr("x", 200)
   .attr("y", (d,i)=>i*22+50)
+  .attr("text-anchor", "end")
   .text(d=>d.majAgency)
-  .attr('class', "barAnno")
+  .attr('class', "barAxis")
 
 
+  barSvgG.append("g")
+        .attr('class', "barAnno")
+      .call(d3.axisBottom(barX))
+          .attr("transform",
+          "translate(" + 205 + "," + 170 + ")")
+
+
+barSvgG
+  .append('text')
+  .attr("x", 180)
+  .attr("y", 13)
+  .text("Top 5 Contracting Departments")
+  .attr('class', "barAxis")
 
 
 
@@ -427,6 +480,8 @@ barSvgG.selectAll('text')
       //   }
   
 mapC.scrollZoom.disable();
+mapC.addControl(new mapboxgl.NavigationControl());
+
 
 
 

@@ -107,16 +107,15 @@ body {
 
 }
 
-h1{
-font-family: "IBM Plex Sans", sans-serif;
-}
+
 
 h1{
 font-family: "Signika", sans-serif;
-font-family: "IBM Plex Sans", sans-serif;
+/*font-family: "IBM Plex Sans", sans-serif;*/
 
 line-height: 100%;
-font-size: 2.3rem;
+font-size: 2.1rem;
+font-weight: 100;
 }
 
 
@@ -132,6 +131,13 @@ line-height: 112%;
 
 opacity: .8;
 font-family: "IBM Plex Sans", sans-serif;
+
+}
+
+#initial {
+
+font-size: 1.5rem;
+padding-top: 10%;
 
 }
 
@@ -347,7 +353,7 @@ left: 4%;
     margin:auto;
     width: 30%;
     height: 99vh;
-    background-color:rgba(33,33,33,.3);
+    background-color:rgba(33,33,33,.7);
     color: whitesmoke;
 /*
     color:rgba(0,0,0,.8);
@@ -373,7 +379,7 @@ left: 4%;
 
     font-family: "Signika", sans-serif;
         /*font-family: "IBM Plex Mono", sans-serif;*/
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
     /*display: inline;*/
     padding-left: 10%;
@@ -390,6 +396,7 @@ left: 4%;
 .sidePanel p.small {
 
     font-size: .8rem;
+    font-weight: 300;
 
 }
 
@@ -397,10 +404,16 @@ left: 4%;
 
   margin-bottom: 4px;
   display: inline;
-  font-size: 1rem;
+  font-size: .8rem;
+border-bottom: 3px solid rgba(255,255,255,.8);
+}
 
+.sidePanel h1 {
 
-
+font-family: "Neuton", Serif;
+font-weight: 100;
+font-size: 3rem;
+margin-bottom: -10%;
 }
 
 
@@ -428,16 +441,16 @@ margin-bottom: 9%;
 
 position: absolute;
 bottom: 0px;
-left: 34%;
+left: 40%;
 
 /*    position: relative;
     display: inline;*/
     z-index: 100;
     /*border: dashed gray;*/
     /*margin:auto;*/
-    width: 50%;
+    width: 60%;
     height: 25vh;
-    background-color:rgba(33,33,33,.3);
+    /*background-color:rgba(33,33,33,.3);*/
     color: whitesmoke;
 /*
     color:rgba(0,0,0,.8);
@@ -462,14 +475,40 @@ left: 34%;
 
 
 
-.barAnno{
+.barAnno line{
+
+stroke: white;
+}
+
+.barAnno path {
+
+stroke: white;
+}
+
+.barAnno text {
 
         font-size: 12px;
-        color: whitesmoke;
-    font-weight: 400;
-    font-family: "IBM Plex Sans", sans-serif;
+        fill: white;
+    font-weight: 900;
+    font-family: "Signika", sans-serif;
 
 }
+
+
+
+
+
+
+.barAxis{
+
+        font-size: 10px;
+        fill: white;
+        stroke-color: white;
+    font-weight: 400;
+    font-family: "Signika", sans-serif;
+
+}
+
 
 
 
