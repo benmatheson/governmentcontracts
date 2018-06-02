@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmVubWF0aGVzb24iLCJhIjoiY2lmZDhyZXVxNTI5eHNtbHgyOTYwbHJtMyJ9.Ch8JQXvunpUrv6tGpeJMCA'
 
 
-console.log(top5Contracts);
+// console.log(top5Contracts);
 
 var gc1 = './data/ny.geojson';
 var navy = './data/navy.geojson';
@@ -34,6 +34,46 @@ const barSvg =  d3.select('#barDiv')
 
 
 const barSvgG = barSvg.append('g');
+
+
+
+const vbarSvg =  d3.select('#vbarDiv')
+                        .append('svg')
+                        .attr("width", 1000)
+                        .attr ("height", 180);
+
+
+const vbarSvgG = vbarSvg.append('g');
+
+
+
+
+
+var radius = 50;
+var width = 100;
+var height= 100;
+var thickness = 20;
+
+var color = d3.scaleOrdinal(d3.schemePuRd);
+
+var colorCustom = d3.scaleOrdinal() // D3 Version 4
+  .domain([0,1])
+  .range(["#1f78b4", "whitesmoke"]);
+
+
+var pieSvg = d3.select("#pie")
+.append('svg')
+// .attr('class', 'pie')
+.attr('width', width)
+.attr('height', height)
+.style("display", "block");
+
+var pieSvgG = pieSvg.append('g')
+.attr('transform', 'translate(' + (width/2) + ',' + (height/2) + ')');
+
+
+
+
 
 
 
@@ -224,8 +264,8 @@ mapC.flyTo({
 mapC.on('mousemove', "gcC", function(e) {
 
 
-  console.log("NAME");
-  console.log(e.features[0].properties.gcplace_of_performance_congressional_district);
+  // console.log("NAME");
+  // console.log(e.features[0].properties.gcplace_of_performance_congressional_district);
         mapC.setFilter("gcCHover", ["==", "gcplace_of_performance_congressional_district", e.features[0].properties.gcplace_of_performance_congressional_district]);
 
 
@@ -255,8 +295,8 @@ var top1Agency = top1.mod_agency.substring(6) ;
 var top1VLocation = top1.vLocation ;
 
 var top1Description = top1.description_of_contract_requirement.toLowerCase() ;
-console.log("top1");
-console.log(top1);
+// console.log("top1");
+// console.log(top1);
 
 
 
@@ -313,21 +353,23 @@ const circleX = d3.scaleLinear().domain([0,1000]).range([4,150]);
 
 
 
-console.log("circle data");
-console.log(circleData)
+// console.log("circle data");
+// console.log(circleData)
 
 
 var circleData = [];
+
+
+
+
+circleData.push(e.features[0].properties.gcpTotalContracts);
+
 
 
 circleSvgG.selectAll('circle')
   .data(circleData)
   .exit()
   .remove();
-
-
-circleData.push(e.features[0].properties.gcpTotalContracts);
-
 
 
 circleSvgG.selectAll('circle')
@@ -351,12 +393,10 @@ circleSvgG.selectAll('circle')
 ////////////////BAR CHART ////////////////////////////
 
 
-const barX = d3.scaleLinear().domain([1000000,10445364770]).range([0,1000]);
+// const barX = d3.scaleLinear().domain([1000000,10445364770]).range([0,1000]);
 
 
 
-console.log("BARX");
-console.log(barX(10000000));
 
 
 var barData = [];
@@ -375,26 +415,43 @@ barSvgG.selectAll('text')
   .remove();
 
 
+barSvgG.selectAll('line')
+  .data(barData)
+  .exit()
+  .remove();
+
+
+
+
+
+
 
 
 var currentDistrict = e.features[0].properties.gcplace_of_performance_congressional_district;
 var currentData = top5Agency.filter(ag => ag.district == currentDistrict);
 
 
-console.log("cd");
-console.log(currentDistrict);
-console.log(currentData);
+var cdEx = d3.extent(currentData, d=>d.agencySum);
+var cdMax = d3.max(currentData, d=>d.agencySum);
+
+const barX = d3.scaleLinear().domain([0,cdMax]).range([0,400]);
+
+
+
+// console.log("cd");
+// console.log(currentDistrict);
+// console.log(currentData);
 
 
 
 barData.push(currentData);
 barData[0].sort((a,b)=>b.agencySum-a.agencySum)
-console.log("sorted data");
-console.log(barData);
+// console.log("sorted data");
+// console.log(barData);
 // barData.d3.descending(a.agencySum, b.agencySum)
 
-console.log("BARDATA");
-console.log(barData);
+// console.log("BARDATA");
+// console.log(barData);
 
 
 
@@ -423,11 +480,23 @@ barSvgG.selectAll('text')
   .attr('class', "barAxis")
 
 
+
+formatValue = d3.format(".2s");
+
+
+
   barSvgG.append("g")
         .attr('class', "barAnno")
-      .call(d3.axisBottom(barX))
+      .call(d3.axisBottom(barX)
+              .ticks(4)
+              .tickFormat(function(d) { return formatValue(d).replace('G', 'B'); }))
+
+        // .tickFormat(d3.format(".0s")))
           .attr("transform",
           "translate(" + 205 + "," + 170 + ")")
+
+
+
 
 
 barSvgG
@@ -435,7 +504,8 @@ barSvgG
   .attr("x", 180)
   .attr("y", 13)
   .text("Top 5 Contracting Departments")
-  .attr('class', "barAxis")
+  // .attr('class', "barAxis")
+  .attr('class', "barAxisTitle")
 
 
 
@@ -737,7 +807,7 @@ map.scrollZoom.disable();
 function toggleStyle (sty) {
 
     map.setStyle(sty);
-    console.log("setting style");
+    // console.log("setting style");
 
 
 }
@@ -1138,6 +1208,580 @@ beltPercentGSelect
 
 })
 
+
+
+
+var vendorCircleSvg = d3.select('#vendorCircle')
+.append('svg')
+.attr("width", 100)
+.attr("height", 100)
+  .append('g')
+
+
+
+d3.csv("data/agencySummaryPie.csv", function (agData){
+
+
+d3.csv("data/gcAgencyCombined.csv", function (ag5Data){
+
+
+
+ag5Data.forEach(function (d){
+
+  return d.pTotal = +d.pTotal;
+
+  });
+
+console.log("AG DATA");
+console.log(agData);
+
+
+console.log("AG5 DATA");
+console.log(ag5Data);
+
+const agSelect = d3.select('#agencySelect');
+
+////////update function
+
+
+
+
+agSelect.on("change", function dog (){
+
+
+// var agency;
+console.log("DA VALUE");
+console.log(d3.event.target.value);
+
+
+
+//////THIS WORKS
+d3.event.target.value == null ? agency = "Department of Defense" : agency = d3.event.target.value;
+
+// d3.event.target.value;
+
+
+agencySummary= agData.filter(d=>d.majAgency == agency);
+agencyTop5 = ag5Data.filter(d =>d.majAgency == agency);
+
+
+console.log("INITAIONAL SUMMAR");
+console.log(agencySummary);
+
+
+const agencyTop5Product = agencyTop5.filter(d=>d.attribute=="product")
+const agencyTop5Vendor = agencyTop5.filter(d=>d.attribute=="vendor")
+const agencyTop5vLocation = agencyTop5.filter(d=>d.attribute=="vLocation")
+
+
+
+agencyTop5Vendor.sort((a,b)=>b.pTotal-a.pTotal)
+
+
+
+// console.log(agencyTop5);
+console.log("VVENDRO");
+console.log(agencyTop5Vendor);
+
+
+
+
+
+function updateAgency (agency) {
+
+// console.log(agencySummary);
+// console.log(agencyTop5);
+
+var localizeString =  parseInt(agencySummary[0].num).toLocaleString();
+
+console.log('updating agency');
+// d3.select('.agencyName')
+//   // .append('text')
+//   .text(agency)
+
+  d3.select('#numContracts')
+  // .append('text')
+  .text(localizeString)
+
+  d3.select('#valContracts')
+  // .append('text')
+  .text(`$${(agencySummary[0].total/1000000000).toFixed(2)}B`)
+  
+
+d3.selectAll('ul').remove();
+
+ var listVendor = d3.select('#vendors5')
+  .append('ul')
+
+
+  listVendor.selectAll('li')
+  .data(agencyTop5Vendor)
+  .enter()
+  .append('li')
+  .text(d=>d.desc)
+  .attr('class', "annoDark")
+
+
+
+ var listProduct = d3.select('#products5')
+  .append('ul')
+
+
+  listProduct.selectAll('li')
+  .data(agencyTop5Product)
+  .enter()
+  .append('li')
+  .text(d=>(d.desc).substring(5))
+  .attr('class', "annoDark")
+
+
+
+
+
+ var listvLocation = d3.select('#vlocations5')
+  .append('ul')
+
+
+  listvLocation.selectAll('li')
+  .data(agencyTop5vLocation)
+  .enter()
+  .append('li')
+  .text(d=>d.desc)
+  .attr('class', "annoDark")
+
+
+
+  // .append('text')
+  // .text(JSON.stringify(agencyTop5Vendor))
+  // .text(agencyTop5Vendor)
+  // .text(agencyTop5vLocation)
+
+pieSvg.selectAll('g')
+  // .data(pieData)
+  // .exit()
+  .remove();
+
+
+// var pieSvgG = pieSvg.append('g')
+
+
+
+
+
+
+// circleSvgG.selectAll('circle')
+//   .data(circleData)
+//   .exit()
+//   .remove();
+
+
+
+
+vendorCircleSvg.selectAll('circle')
+  // .data(agencyTop5Vendor)
+  // .exit()
+  .remove();
+
+
+  vendorCircleSvg.selectAll("circle")
+    .data(agencyTop5Vendor)
+    .enter()
+    .append('circle')
+    .attr("cx",100 )
+    .attr("cy", 100)
+    .attr("r", d=> d.pTotal/100000000)
+    .attr("stroke", "red")
+    .attr("stroke-width", .3)
+    .attr("fill", "none")
+
+
+
+
+
+
+
+
+//////////////barwith
+
+
+
+// var vbarData = [];
+
+
+vbarSvgG.selectAll('rect')
+  // .data(agencyTop5Vendor)
+  // // .exit()
+  //   .transition()
+  // .duration(800)
+  // .ease(d3.easeExp)
+
+  .remove();
+
+
+
+vbarSvgG.selectAll('text')
+  // .data(agencyTop5Vendor)
+  // .exit()
+  //   .transition()
+  // .duration(800)
+  // .ease(d3.easeExp)
+
+  .remove();
+
+
+vbarSvgG.selectAll('line')
+  // .data(agencyTop5Vendor)
+  // .exit()
+  .remove();
+
+
+
+
+
+
+// var currentDistrict = e.features[0].properties.gcplace_of_performance_congressional_district;
+// var currentData = top5Agency.filter(ag => ag.district == currentDistrict);
+
+
+var vcdEx = d3.extent(agencyTop5Vendor, d=>d.pTotal);
+var vcdMax = d3.max(agencyTop5Vendor, d=>d.pTotal);
+
+console.log("EXTED");
+console.log(vcdEx);
+
+const vbarX = d3.scaleLinear().domain([0,vcdMax]).range([0,800]);
+
+
+
+// console.log("cd");
+// console.log(currentDistrict);
+// console.log(currentData);
+
+
+
+// barData.push(currentData);
+// barData[0].sort((a,b)=>b.agencySum-a.agencySum)
+
+
+
+
+// console.log("sorted data");
+// console.log(barData);
+// barData.d3.descending(a.agencySum, b.agencySum)
+
+// console.log("BARDATA");
+// console.log(barData);
+
+
+
+vbarSvgG.selectAll('rect')
+  .data(agencyTop5Vendor)
+  .enter()
+  .append('rect')
+  .attr("x", 280)
+  .attr("y", (d,i)=>i*22+20)
+  .attr("height", 11)
+  .attr("width", (d,i)=> i*160)
+  .attr("opacity", .9)
+  .attr("fill", "white")
+  .transition()
+  .duration(800)
+  .ease(d3.easeExp)
+  // .delay((d,i)=> i*150)
+  .attr("width", d=> vbarX(d.pTotal))
+
+
+
+
+vbarSvgG.selectAll('text')
+  .data(agencyTop5Vendor)
+  .enter()
+  .append('text')
+  .attr("x", 270)
+  .attr("y", (d,i)=>i*22+30)
+  .attr("text-anchor", "end")
+  .text(d=>d.desc)
+  .attr('class', "barAxis")
+
+
+
+formatValue = d3.format(".2s");
+
+
+
+  vbarSvgG.append("g")
+        .attr('class', "barAnno")
+        .call(d3.axisBottom(vbarX)
+              .ticks(3)
+
+              // .tickFormat(function(d) { return formatValue(d).replace('G', 'B'); }))
+              // .tickFormat(function(d) { return formatValue(d)})
+              // .tickFormat(d3.format(".0s")))
+
+              .tickFormat(function(d) { return formatValue(d).replace('G', 'B'); }))
+
+
+
+            .attr("transform",
+          "translate(" + 280 + "," + 150 + ")")
+
+
+
+
+        //             .tickFormat(function(d) { return formatValue(d).replace('G', 'B'); }))
+
+        // // .tickFormat(d3.format(".0s")))
+        //   .attr("transform",
+        //   "translate(" + 205 + "," + 170 + ")")
+
+
+
+
+
+
+
+
+
+
+
+////////////////bar within end///
+
+
+
+
+/////////////CIRCLE///////////////
+
+
+// agencySummary
+
+
+var pieData = [];
+
+var pieData1 = {};
+var pieData2= {};
+
+pieData1.value = agencySummary[0].metroBeltSpendPercent
+pieData2.value = agencySummary[0].nonMetroSpend
+
+
+console.log("PIEDdatw1");
+console.log(pieData1);
+
+pieData.push(pieData1, pieData2);
+
+
+console.log("PIEDAYA");
+console.log(pieData);
+
+// var radius = 50;
+// var width = 200;
+// var height= 200;
+// var thickness = 20;
+
+// var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+// var pieSvg = d3.select("#pie")
+// .append('svg')
+// // .attr('class', 'pie')
+// .attr('width', width)
+// .attr('height', height);
+
+var pieSvgG = pieSvg.append('g')
+.attr('transform', 'translate(' + (width/2) + ',' + (height/2) + ')');
+
+
+
+
+
+
+
+var arc = d3.arc()
+.innerRadius(radius - thickness)
+.outerRadius(radius);
+
+var pie = d3.pie()
+.value(function(d) { return d.value; })
+.sort(null);
+
+pieSvgG.selectAll('path')
+  // .data(pieData)
+  // .exit()
+  .remove();
+
+
+
+var path = pieSvgG.selectAll('path')
+.data(pie(pieData))
+.enter()
+.append("g")
+// .on("mouseover", function(d) {
+//       let g = d3.select(this)
+//         .style("cursor", "pointer")
+//         .style("fill", "black")
+//         .append("g")
+//         .attr("class", "text-group");
+ 
+//       g.append("text")
+//         .attr("class", "name-text")
+//         .text(`${d.data.name}`)
+//         .attr('text-anchor', 'middle')
+//         .attr('dy', '-1.2em');
+  
+//       g.append("text")
+//         .attr("class", "value-text")
+//         .text(`${d.data.value}`)
+//         .attr('text-anchor', 'middle')
+//         .attr('dy', '.6em');
+//     })
+//   .on("mouseout", function(d) {
+//       d3.select(this)
+//         .style("cursor", "none")  
+//         .style("fill", color(this._current))
+//         .select(".text-group").remove();
+//     })
+  .append('path')
+  .attr('d', arc)
+            .attr('fill', (d,i) => colorCustom(i))
+
+
+
+
+var totalLength = path.node().getTotalLength();
+
+
+console.log("TOTALLENG");
+console.log(totalLength);
+
+      path.attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+        .duration(2000)
+          .ease(d3.easeExp)
+        .attr("stroke-dashoffset", 0)
+      .attr("stroke-dashoffset", totalLength);
+
+;
+
+  // .on("mouseover", function(d) {
+  //     d3.select(this)     
+  //       .style("cursor", "pointer")
+  //       .style("fill", "black");
+  //   })
+  // .on("mouseout", function(d) {
+  //     d3.select(this)
+  //       .style("cursor", "none")  
+  //       .style("fill", color(this._current));
+  //   })
+  // .each(function(d, i) { this._current = i; });
+
+
+
+/////////////////////circle end//////////
+
+
+
+
+
+}
+
+updateAgency(agency)
+
+
+// Create the event
+// var event = new CustomEvent(updateAgency, "Department of Agriculture");
+
+// Dispatch/Trigger/Fire the event
+document.dispatchEvent(event);
+
+
+})
+
+
+var agency = "Department of Energy";
+
+var sel1 = document.querySelector("#agencySelect")
+
+
+// console.log("SEL1");
+// console.log(sel1.onchange);
+
+// sel1.onchange;
+
+
+
+
+
+// var sEl = document.querySelector('select');
+
+// console.log(sEl);
+
+// sEl.onchange("Department of Energy");
+
+// var event = new Event('change');
+
+
+// sEl.onchange();
+
+
+
+var agency =  "Department of Agriculture";
+
+var element = document.getElementById('agencySelect');
+var event = new Event('change', { bubbles: true });
+element.dispatchEvent(event);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Dispatch it.
+// sEl.dispatchEvent(event);
+// sEl.onchange("Department of Agriculture");
+
+
+
+
+// dog("Department of Defense")
+
+
+// agSelect.onchange('Department of Agriculture');
+
+
+// agSelect.call(dog, "Department of Defense")
+
+
+
+// d3.select(window).on("load", updateAgency("Department of Defense"));
+
+// d3.select('#next')
+//   .attr('selected', 'selected')
+   
+
+
+
+
+
+
+
+
+
+
+
+  }) 
+
+}) 
 
 
 

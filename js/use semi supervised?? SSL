@@ -1,0 +1,23 @@
+use semi supervised?? SSL
+
+? few labels
+? meanignful unlabeled images
+?meanfniul unlabeled data.
+
+
+
+run model w/ labelled
+run w/ unlabelled. 
+
+
+label propogation model
+
+create decision boundaries
+
+
+###bias - 
+
+
+*selectio bias
+*recall bias
+*survivorship bias
