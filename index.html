@@ -16,6 +16,8 @@
         <script src="js/vendor/d3/d3.min.js"></script>
         <script type="text/javascript" src="data/top5Contracts.json"></script>
         <script type="text/javascript" src="data/top5Agency.json"></script>
+                <script src="js/vendor/ScrollMagic.min.js"></script>
+
 
 
                 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
@@ -36,7 +38,8 @@
 
 
 <div class="panel dark">
-   <img class="centerMin" src="img/dc.png">
+   <img class="centerMin" src="img/dcWhite.png">
+   <!-- <img class="centerMin" src="img/dcWhite.png"> -->
 
         <h1 class="header centerMin">Beltway Spending</h1>
         <h2 class="subHeader">Where does the federal goverment award contracts ?</h2>
@@ -45,6 +48,7 @@
 
 </div>
 
+<div id="mapTrigger"></div>
         <div class= "map" id="mapC">
 
 
@@ -67,7 +71,8 @@
 </div>
 
 </div>
-<h1>Explore by Agency</h1>
+<h1 class="subHeader darkText">Explore by Agency</h1>
+<h1 class="subSub darkText">Select an agency to explore its contracts</h1>
      <div class="panel dark" id="agencySelect">
 
 
@@ -166,7 +171,7 @@
 </div> -->
 
 <div class ="fiveContainer">
-
+<div id="productTrigger"></div>
     <div class="five">
             <h2 class= "agencySub"> Largest Products or Service </h2>
 
@@ -196,7 +201,7 @@
 
 
 
-<div class="panel">
+<!-- <div class="panel">
     <h1> Five Largest Vendors (beltway:purple, non-beltway orange)</h1>
 <div id="vendorDot1"></div>
 <div id="vendorDot2"></div>
@@ -205,8 +210,8 @@
 <div id="vendorDot5"></div>
 
 
-</div>
-<div class= "map" id="map0">
+</div> -->
+<!-- <div class= "map" id="map0">
 
     <h1 class="mapHeader"> Contract Size by Agency</h1>
 
@@ -221,12 +226,12 @@
 <div class="deptButton" onclick="toggleDotStyle('mapbox://styles/benmatheson/cjhcu2hpg1bhd2spnlx6sdxeo')">Department of Defense</div>
 
 </div>
+ -->
+
+<!-- </div> -->
 
 
-</div>
-
-
-<div class= "map" id="map1">
+<!-- <div class= "map" id="map1">
         <h1 class="mapHeader"> Vendor Location and Work <br />Performace Networks by Agency</h1>
 
  
@@ -238,7 +243,7 @@
 
 <div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhe0ml0k2ine2sqciajtp5lp')">Department of Agriculture</div>
 <div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhcx9p8f1gmp2srs3jzhgcu3')">Department of the Navy</div>
-</div>
+</div> -->
 
 
 
@@ -259,15 +264,27 @@
 
 </div>  
  -->
-</div>
+<!-- </div> -->
 
-<div class="panel">
-    <h1> Five Largest Products (beltway:red, non-beltway blue)</h1>
+<div class="panel dark">
+    <h1 class="subHeader darkText"> Major Contracting Products </h1>
+
+<div class="colorCont">
+    <span class="bway">beltway-based</span> 
+    <span class="nonBway"> non-beltway-based</span>
+
+</div>
 <div id="productDot1"></div>
 <div id="productDot2"></div>
 <div id="productDot3"></div>
 <div id="productDot4"></div>
 <div id="productDot5"></div>
+
+<div id="productDot6"></div>
+<div id="productDot7"></div>
+
+<div id="productDot8"></div>
+<div id="productDot9"></div>
 
 
 
@@ -295,7 +312,7 @@
 
 
 <div class="panel">
-    <h2 class="about center">About</h2>
+    <h2 class="about center whiteText">About</h2>
     <p class="center white">This analysis uses data published on the Enigma Open Data platform. It includes 2017 (the last year full data is available) federal goverment contracts greater than $1 million that were awarded to US-based companies and executed in the United States. Beltway include cities with a geographic center in the Washington-Arlington-Alexandria, DC-VA-MD-WV Metropolitan Statistical Area. The federal government spends money in a number of ways including contracting,     grants, credit card purchases, and cooperative agreements. <br /><br />
 
     Analysis and visualization by <a target= "_blank" href="https://benmatheson.github.io/">Ben Matheson</a>
@@ -316,6 +333,9 @@
         <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
 
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i" rel="stylesheet">
+
+
+
 
         <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
 

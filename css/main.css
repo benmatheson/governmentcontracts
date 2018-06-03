@@ -107,6 +107,9 @@ body {
     background-color: #2b2b2b;
 
 
+    background-color: #262626;
+
+
 
 }
 
@@ -160,9 +163,10 @@ font-weight: thin;
 /*font-family: "IBM Plex Serif";*/
 /*font-weight: 400;*/
 font-size: 1.3rem;
-/*color: whitesmoke;*/
+color: whitesmoke;
 margin-top: 2%;
 margin-bottom: 3%;
+font-weight: 200;
 }
 
 
@@ -193,6 +197,7 @@ color: white;
 font-weight: 900;
 font-size: 1.7rem;
 transition: all .2s ease;
+font-family: "IBM Plex Sans", sans-serif;
 
 /*width: 800px;*/
 height: 50px;
@@ -216,7 +221,7 @@ height: 50px;
 margin: 0 auto;
 left: 40%;
 display: block;
-margin-top: 140px;
+margin-top: 3%;
 /*padding-top: 400px;*/
 }
 
@@ -259,15 +264,62 @@ width: 70%;
 }
 
 
+
+@keyframes imgAni {
+
+from {
+
+filter: hue-rotate(0deg);
+filter: saturate(0%);
+filter: blur(10px);
+opacity: .1;
+
+    /*width: 30%;*/
+
+}
+
+to{
+
+
+filter: hue-rotate(180deg);
+filter: saturate(100%);
+filter: blur(0px);
+opacity: .7;
+
+    /*width: 40%;*/
+
+
+}
+
+
+}
+
+
 img.centerMin {
 /**/
+margin-top: 4%;
     display: block;
     width: 40%;
-        /*filter: invert(90%);*/
-       mix-blend-mode: darken;
+    /*position: absolute;*/
+    /*animation: imgAni, 2s;*/
+
+      animation-name: imgAni;
+    animation-duration: 2s;
+    /*animation-direction: initial;;*/
+    animation-fill-mode: forwards;
+
+
+
+    /*filter: hue-rotate(80deg);*/
+        /*filter: invert(80%);*/
+       /*mix-blend-mode: darken;*/
 
     /*height: auto;*/
 }
+
+
+
+
 
 
 
@@ -286,13 +338,13 @@ font-family: "Neuton", Serif;
 text-align: center;
 /*text-decoration: underline;*/
 /*text-decoration-line: red;*/
-line-height: 40%;
-font-size: 8rem;
+/*line-height: 80%;*/
+font-size: 6rem;
 font-weight: 400;
 margin: auto;
 min-width: 100%;
 /*background-blend-mode: difference;*/
-/*color: whitesmoke;*/
+color: whitesmoke;
 }
 
 
@@ -311,12 +363,80 @@ font-weight: 400;
 font-family: "IBM Plex Serif";
 font-style: italic;
 margin-bottom: 2%;
-margin-top: 5%;
+margin-top: 3%;
 
 /*color: whitesmoke;*/
 
 }
 
+.darkText {
+
+color: whitesmoke;
+opacity: .8;
+/*font-style: normal;*/
+font-size: 2.5rem;
+
+}
+
+
+.colorCont {
+
+width: 40%;
+height: auto;
+margin: auto;
+font-family: "IBM Plex sans-serif", sans-serif;
+font-weight: 600;
+font-size: .9rem;
+text-align: center;
+
+
+}
+
+
+.bway {
+
+color: red;
+opacity: .9;
+font-style: normal;
+/*display: inline-block;
+margin: auto;
+width: 10%;
+float: center;
+text-align: center;*/
+}
+
+.nonBway {
+
+color: lightblue;
+
+}
+
+.whiteText {
+
+color: #333333;
+font-weight: 900;
+
+}
+
+
+.subSub {
+
+/*position: absolute;*/
+/*top: 26%;
+left:12%;*/
+margin: auto;
+line-height: 100%;
+text-align: center;
+font-size: 1.1rem;
+font-weight: 400;
+font-family: "IBM Plex Sans";
+font-style: italic;
+margin-bottom: 2%;
+/*margin-top: 5%;*/
+
+/*color: whitesmoke;*/
+
+}
 
 
 .agencyName
@@ -381,9 +501,10 @@ line-height: 10%;
 
 .agencyFlex {
 display: flex;
+width: 100%;
 /*flex-direction: column;*/
 justify-content: center;
-background-color: #2b2b2b;
+background-color: #262626;
 
 }
 
@@ -479,7 +600,7 @@ ul {
 
 .dark {
 
-background-color: #2b2b2b;
+/*background-color: #2b2b2b;*/
 background-color: #262626;
 
 }
@@ -533,8 +654,8 @@ justify-content: center;
 
 
 position: absolute;
-top: 0%;
-left: 4%;
+/*top: 0%;*/
+left: 0%;
 
 /*    position: relative;
     display: inline;*/
@@ -639,7 +760,7 @@ left: 40%;
     /*border: dashed gray;*/
     /*margin:auto;*/
     width: 60%;
-    height: 25vh;
+    height: 18vh;
     /*background-color:rgba(33,33,33,.3 );*/
     color: whitesmoke;
 /*
@@ -753,6 +874,21 @@ margin: auto;
 
 }
 
+.annoDarkRect{
+
+        font-size: 15px;
+        padding-left: 20px;
+        margin-left: 20px;
+        /*padding-left: 50px;*/
+     /*   color: green;
+        stroke: green;*/
+        fill: white;
+    font-weight: 400;
+    font-family: "IBM Plex Sans", sans-serif;
+
+}
+
+
 
 
 .annoItal{
@@ -760,7 +896,8 @@ margin: auto;
         font-size: 12px;
         color: black;
         font-style:italic;
-    font-weight: 700;
+        fill: white;
+    font-weight: 300;
     font-family: "IBM Plex Sans", sans-serif;
 
 }
