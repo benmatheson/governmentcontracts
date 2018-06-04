@@ -44,7 +44,7 @@ const barSvgG = barSvg.append('g');
 const vbarSvg =  d3.select('#vbarDiv')
                         .append('svg')
                         .attr("width", 1000)
-                        .attr ("height", 180);
+                        .attr ("height", 160);
 
 
 const vbarSvgG = vbarSvg.append('g');
@@ -229,22 +229,56 @@ mapC.flyTo({
 }
 
 
+
+function executeZoomWide () {
+
+console.log("GOING WIDe");
+mapC.flyTo({
+
+  center: [
+            -108,39
+           ],
+  zoom: 3.5,
+          speed: 0.5, // make the flying slow
+        curve: 1, // change the speed at which it zooms out
+
+})
+
+}
+
+
 var controller = new ScrollMagic.Controller();
 
 
   var scene1 = new ScrollMagic.Scene ({
 
       triggerElement: "#mapTrigger",
-      duration: 100})
+      triggerHook: "onLeave",
+
+      duration: 200})
 
     .addTo(controller)
   // .setClassToggle("#bars", "fade")
-    .on("end", function () {
+    .on("start", function () {
         executeZoom()})
 
 scene1.reverse(false);
+scene1.setPin('#mapC');
 
 
+  var scene2 = new ScrollMagic.Scene ({
+
+      triggerElement: "#mapWideTrigger",
+      triggerHook: "onEnter",
+      duration: 100,
+      offset: 0})
+
+    .addTo(controller)
+  // .setClassToggle("#bars", "fade")
+    .on("start", function () {
+        executeZoomWide()})
+
+scene1.reverse(false);
 
 
 
@@ -504,7 +538,7 @@ barSvgG.selectAll('text')
   .enter()
   .append('text')
   .attr("x", 200)
-  .attr("y", (d,i)=>i*16+50)
+  .attr("y", (d,i)=>i*16+53)
   .attr("text-anchor", "end")
   .text(d=>d.majAgency)
   .attr('class', "barAxis")
@@ -1578,8 +1612,8 @@ vbarSvgG.selectAll('rect')
   .enter()
   .append('rect')
   .attr("x", 280)
-  .attr("y", (d,i)=>i*22+20)
-  .attr("height", 11)
+  .attr("y", (d,i)=>i*18+20)
+  .attr("height", 9)
   .attr("width", (d,i)=> i*160)
   .attr("opacity", .9)
   .attr("fill", "white")
@@ -1597,7 +1631,7 @@ vbarSvgG.selectAll('text')
   .enter()
   .append('text')
   .attr("x", 270)
-  .attr("y", (d,i)=>i*22+30)
+  .attr("y", (d,i)=>i*18+30)
   .attr("text-anchor", "end")
   .text(d=>d.desc.substring(0,28))
   .attr('class', "barAxis")
@@ -1622,7 +1656,7 @@ formatValue = d3.format(".2s");
 
 
             .attr("transform",
-          "translate(" + 280 + "," + 150 + ")")
+          "translate(" + 280 + "," + 120 + ")")
 
 
 

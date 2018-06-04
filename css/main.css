@@ -167,7 +167,41 @@ color: whitesmoke;
 margin-top: 2%;
 margin-bottom: 3%;
 font-weight: 200;
+padding-bottom: 2%;
 }
+
+
+.center a {
+
+    text-decoration: none;
+    border-bottom: 3px solid black;
+/*font-weight: bold;*/
+font-color: black;
+font-weight: 400;
+transition: ease .1s
+
+
+}
+
+.center a:visited {
+
+font-weight: bold;
+    color: black;
+
+
+}
+
+.center a:hover {
+
+    text-decoration: none;
+    border-bottom: 4.5px solid black;
+/*font-weight: bold;*/
+    color: black;
+
+
+}
+
+
 
 
 .about {
@@ -190,7 +224,7 @@ color: #333333;
 
 select {
 
-padding: 48px;
+padding: .5% 1% .5% 1% ;
 padding-left: 25px;
 background-color: #333333;
 color: white;
@@ -198,9 +232,10 @@ font-weight: 900;
 font-size: 1.7rem;
 transition: all .2s ease;
 font-family: "IBM Plex Sans", sans-serif;
+-webkit-appearance:none;
 
 /*width: 800px;*/
-height: 50px;
+/*height: 30px;*/
 
 /*text-align:center*/
 }
@@ -456,7 +491,8 @@ font-family: "Signika", sans-serif;
 font-family: "IBM Plex Sans", sans-serif;
 font-size: 1.1rem;
 font-weight: 400;
-margin:  2%;
+margin:  .5%;
+margin-bottom: 2.4%;
 font-style: italic;
 width: 100%;
  text-align: center;
@@ -465,6 +501,13 @@ width: 100%;
 
 
 }
+
+/*
+#vbarDiv {
+
+margin-bottom: 0;
+
+}*/
 
 
 #vendors5 {
@@ -488,7 +531,7 @@ width: 100%;
 .ban {
 
 font-family: "Signika", sans-serif;
-font-size: 4rem;
+font-size: 3.1rem;
 font-weight: 900;
 line-height: 10%;
  text-align: center;
@@ -505,6 +548,7 @@ width: 100%;
 /*flex-direction: column;*/
 justify-content: center;
 background-color: #262626;
+margin-top: -1%;
 
 }
 
@@ -514,8 +558,8 @@ width: 30%;
 /*height: auto;*/
 /*height: 100px;*/
 background-color: "lightgray";
-margin: 1% 1% 1% 1%;
-padding: 1% 5% 1% 5%;
+margin: .3% 1% .9% 1%;
+padding: 0% 2% .9% 2%;
 height: auto;
 border: solid 1px whitesmoke;
 border-radius: 3px;
@@ -555,7 +599,7 @@ background-color: whitesmoke;
         width: 100%;
         min-height: 100vh;
         margin:auto;
-
+        /*margin-bottom: 4%;*/
 
 
 }
@@ -565,7 +609,7 @@ background-color: whitesmoke;
 .five {
 
 width: 50%;
-margin: 5%;
+margin: 2%;
 height: 10%;
 border: solid 1px whitesmoke;
 border-radius: 3px;
@@ -823,7 +867,7 @@ margin: auto;
 
 .barAxis{
 
-        font-size: 13px;
+        font-size: 10px;
         fill: white;
         stroke-color: white;
     font-weight: 400;
@@ -914,6 +958,12 @@ margin: auto;
         margin-bottom: 2%;
 
       }
+
+#agencyLess {
+
+margin: 0;
+
+}
 
 
 
