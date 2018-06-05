@@ -194,7 +194,7 @@ font-weight: bold;
 .center a:hover {
 
     text-decoration: none;
-    border-bottom: 4.5px solid black;
+    border-bottom: 4.5px solid white;
 /*font-weight: bold;*/
     color: black;
 
@@ -202,6 +202,50 @@ font-weight: bold;
 }
 
 
+
+.intro a {
+
+font-color: whitesmoke;
+    border-bottom: 3px solid white;
+
+
+
+}
+.intro a:hover {
+  text-decoration: none;
+    border-bottom: 4.5px solid white;
+/*font-weight: bold;*/
+    color: white;
+
+
+}
+
+
+
+
+.intro a:visited {
+
+font-weight: bold;
+    color: white;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.inl {
+display: inline;
+
+}
 
 
 .about {
@@ -393,8 +437,8 @@ left:12%;*/
 margin: auto;
 line-height: 100%;
 text-align: center;
-font-size: 2.9rem;
-font-weight: 400;
+font-size: 2.4rem;
+font-weight: 100;
 font-family: "IBM Plex Serif";
 font-style: italic;
 margin-bottom: 2%;
@@ -412,6 +456,31 @@ opacity: .8;
 font-size: 2.5rem;
 
 }
+
+span.darkText{
+
+    display: inline;
+
+}
+
+#spread{
+        /*text-align: right;*/
+margin: auto;
+padding-left: 10%;
+width: auto;
+/*border: dashed red;*/
+
+}
+
+
+h1.darkText {
+
+        display: inline;
+        text-align: center;
+        margin:auto;
+
+}
+
 
 
 .colorCont {
@@ -462,7 +531,7 @@ left:12%;*/
 margin: auto;
 line-height: 100%;
 text-align: center;
-font-size: 1.1rem;
+font-size: .9rem;
 font-weight: 400;
 font-family: "IBM Plex Sans";
 font-style: italic;
@@ -626,6 +695,7 @@ border-radius: 3px;
 display: flex;
 flex-direction: horizontal;
 /*border: solid 1px whitesmoke;*/
+margin-top: 0;
 }
 
 

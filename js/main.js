@@ -44,7 +44,7 @@ const barSvgG = barSvg.append('g');
 const vbarSvg =  d3.select('#vbarDiv')
                         .append('svg')
                         .attr("width", 1000)
-                        .attr ("height", 160);
+                        .attr ("height", 140);
 
 
 const vbarSvgG = vbarSvg.append('g');
@@ -1159,7 +1159,7 @@ createDot("#productDot9", telcom)
 var controller2 = new ScrollMagic.Controller();
 
 
- var scene2 = new ScrollMagic.Scene ({
+ var scene3 = new ScrollMagic.Scene ({
 
       triggerElement: "#productTrigger",
       duration: 100})
@@ -1169,7 +1169,11 @@ var controller2 = new ScrollMagic.Controller();
     .on("start", function () {
         executeDots()})
 
+    scene3.reverse(false);
+
+
 })
+
 
 
 
@@ -1657,6 +1661,14 @@ formatValue = d3.format(".2s");
 
             .attr("transform",
           "translate(" + 280 + "," + 120 + ")")
+
+
+            // vbarSvgG.append('text')
+            //           .text("feres")
+            //           .attr("x","290")
+            //           .attr("y","150")
+            //           .attr('class', "barAnno")
+
 
 
 
