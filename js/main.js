@@ -44,7 +44,7 @@ const barSvgG = barSvg.append('g');
 const vbarSvg =  d3.select('#vbarDiv')
                         .append('svg')
                         .attr("width", 1000)
-                        .attr ("height", 140);
+                        .attr ("height", 180);
 
 
 const vbarSvgG = vbarSvg.append('g');
@@ -524,10 +524,10 @@ barSvgG.selectAll('rect')
   .enter()
   .append('rect')
   .attr("x", 210)
-  .attr("y", (d,i)=>i*16+40)
-  .attr("height", 15)
+  .attr("y", (d,i)=>i*16+20)
+  .attr("height", 14)
   .attr("width", d=> barX(d.agencySum))
-  .attr("opacity", .9)
+  .attr("opacity", .8)
   .attr("fill", "whitesmoke")
 
 
@@ -538,7 +538,7 @@ barSvgG.selectAll('text')
   .enter()
   .append('text')
   .attr("x", 200)
-  .attr("y", (d,i)=>i*16+53)
+  .attr("y", (d,i)=>i*16+33)
   .attr("text-anchor", "end")
   .text(d=>d.majAgency)
   .attr('class', "barAxis")
@@ -557,7 +557,7 @@ formatValue = d3.format(".2s");
 
         // .tickFormat(d3.format(".0s")))
           .attr("transform",
-          "translate(" + 205 + "," + 140 + ")")
+          "translate(" + 210 + "," + 100 + ")")
 
 
 
@@ -566,8 +566,8 @@ formatValue = d3.format(".2s");
 barSvgG
   .append('text')
   .attr("x", 180)
-  .attr("y", 13)
-  .text("Top 5 Contracting Departments")
+  .attr("y", 11)
+  .text("District's Top Five Contracting Departments")
   // .attr('class', "barAxis")
   .attr('class', "barAxisTitle")
 

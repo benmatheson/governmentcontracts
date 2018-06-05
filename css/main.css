@@ -838,8 +838,17 @@ border-bottom: 3px solid rgba(255,255,255,.8);
 font-family: "Neuton", Serif;
 font-weight: 100;
 font-size: 3rem;
-margin-bottom: -10%;
+margin-bottom: -5%;
+padding: 2%;
+  text-align: center;
+
+border-width: .1px;
+border-style: dotted;
+/*border-radius: 1px;*/
+border-color: rgba(255, 255, 255,.3);
 }
+
+
 
 
 .panelFlex {
@@ -857,6 +866,7 @@ flex-wrap: wrap;
 
 width: 50%;
 margin-bottom: 9%;
+/*transition: ease .5s;*/
 /*border: dashed gray .2px;*/
 /*margin: 0;*/
 }
@@ -950,9 +960,9 @@ margin: auto;
 
        fill: white;
         stroke-color: white;
-    font-weight: 400;
+    font-weight: 800;
     font-family: "Signika", sans-serif;
-        font-size: 18px;
+        font-size: 14px;
 
 }
 
