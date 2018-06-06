@@ -1,6 +1,12 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmVubWF0aGVzb24iLCJhIjoiY2lmZDhyZXVxNTI5eHNtbHgyOTYwbHJtMyJ9.Ch8JQXvunpUrv6tGpeJMCA'
 
 
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+
 console.log("SCROOMLANG");
 console.log(ScrollMagic);
 
@@ -380,10 +386,10 @@ var top1Description = top1.description_of_contract_requirement.toLowerCase() ;
                 <div class="sideItem"><h4>Contract Value (millions): </h4><p> $${((value)/1000000).toFixed(2)}</p></div>
                 <div class="sideItem"><h4>Contracts > $1 million: </h4><p>${numContracts}</p></div>
                 <div class="sideItem"><h4>Percent Based in Beltway: </h4><p>${parseFloat(percent).toFixed(2)}%</p></div>
-                <div class="sideItem"><h4>Largest Contract Vendor: </h4><p class="small">${top1Vendor}</p></div>
-                <div class="sideItem"><h4>Largest Contract Agency: </h4><p class="small">${top1Agency}</p></div>
+                <div class="sideItem"><h4>Largest Contract Vendor: </h4><p class="small">${toTitleCase(top1Vendor)}</p></div>
+                <div class="sideItem"><h4>Largest Contract Agency: </h4><p class="small">${toTitleCase(top1Agency)}</p></div>
                 <div class="sideItem"><h4>Largest Contract Location: </h4><p class="small">${top1VLocation}</p></div>
-                <div class="sideItem"><h4>Description: </h4><p class="small">${top1Description}</p></div></div>`
+                <div class="sideItem"><h4>Description: </h4><p class="small">${toTitleCase(top1Description)}</p></div></div>`
 
 
 
@@ -404,7 +410,7 @@ var top1Description = top1.description_of_contract_requirement.toLowerCase() ;
             // .addTo(mapC);
 
           document.getElementById('sidePanelText').innerHTML = sideContent;
-          document.getElementById('initial').innerHTML = null;
+          // document.getElementById('initial').innerHTML = null;
 
 
 
@@ -525,7 +531,7 @@ barSvgG.selectAll('rect')
   .append('rect')
   .attr("x", 210)
   .attr("y", (d,i)=>i*16+20)
-  .attr("height", 14)
+  .attr("height", 10)
   .attr("width", d=> barX(d.agencySum))
   .attr("opacity", .8)
   .attr("fill", "whitesmoke")
@@ -538,7 +544,7 @@ barSvgG.selectAll('text')
   .enter()
   .append('text')
   .attr("x", 200)
-  .attr("y", (d,i)=>i*16+33)
+  .attr("y", (d,i)=>i*16+29)
   .attr("text-anchor", "end")
   .text(d=>d.majAgency)
   .attr('class', "barAxis")
@@ -567,7 +573,9 @@ barSvgG
   .append('text')
   .attr("x", 180)
   .attr("y", 11)
-  .text("District's Top Five Contracting Departments")
+  // .text("District's Top Five Contracting Departments")
+  .text(d=> `${district}'s Top Five Contracting Departments`)
+  // .text(d=> `${d[0].district}'s Top Five Contracting Departments")`)
   // .attr('class', "barAxis")
   .attr('class', "barAxisTitle")
 
@@ -1468,7 +1476,9 @@ d3.selectAll('ul').remove();
   .data(agencyTop5Product)
   .enter()
   .append('li')
-  .text(d=>(d.desc).substring(5))
+  // .text(d=>(d.desc).substring(5))
+  .text(d=>toTitleCase((d.desc).substring(5)))
+
   .attr('class', "annoDark")
 
 
@@ -1635,9 +1645,10 @@ vbarSvgG.selectAll('text')
   .enter()
   .append('text')
   .attr("x", 270)
-  .attr("y", (d,i)=>i*18+30)
+  .attr("y", (d,i)=>i*18+28)
   .attr("text-anchor", "end")
-  .text(d=>d.desc.substring(0,28))
+  // .text(d=>d.desc.substring(0,28).toLowerCase())
+  .text(d=>toTitleCase(d.desc.substring(0,28)))
   .attr('class', "barAxis")
 
 

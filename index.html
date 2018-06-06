@@ -18,6 +18,9 @@
         <script type="text/javascript" src="data/top5Agency.json"></script>
                 <script src="js/vendor/ScrollMagic.min.js"></script>
 
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+
+
 
 
                 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
@@ -62,7 +65,10 @@ Well-heeled industries have risen to meet this need in the form of Beltway compa
 
             <div class="sidePanel"> 
                 <h1> Contracting Across America </h1>
-                <p id="initial"><i>Hover over a district to explore federal contracting data</i></p>
+                <p id="initial"><i>Hover over a district to explore federal contracting data   </i><i class="fas fa-long-arrow-alt-right iconSmall"></i>
+
+
+</p>
 
                 <div id="sidePanelText">
                                                     <div id="circleDiv"></div> 
@@ -122,12 +128,15 @@ Meanwhile, Virginia's <a href="https://en.wikipedia.org/wiki/Virginia%27s_8th_co
 
 Washington D.C. (which retains only a non-voting member of congress) had the most million-plus dollar contracts at 4206. On the opposite end of the spectrum, 34 districts hosted 10 or fewer million-dollar contracts. Of the top 10 districts by count, eight  are located in Virginia or Maryland, or D.C. 
 
-
+<!-- <i class="fas fa-chevron-circle-down icon"></i> -->
 
 </p>
 </div>
-<div id="spread"><h1 class="subHeader darkText inl">Explore by Agency</h1>
-<span class="subSub darkText">Select an agency to explore its contracts.</span></div>
+<div id="spread"><h1 class="subHeader darkText inl"> Explore by Agency</h1>
+
+<span class="subSub darkText">  Select an agency to explore its contracts.</span>
+
+</div>
 
 
      <div class="panel dark" id="agencySelect">
@@ -135,7 +144,7 @@ Washington D.C. (which retains only a non-voting member of congress) had the mos
 
 
 <select id="inds">
-        <option value="Department of Defense">Department of Defense</option>
+        <option value="Department of Defense">⬍ Department of Defense</option>
         <option id="next" value="Department of the Interior" >Department of the Interior</option>
         <option value="Department of Agriculture">Department of Agriculture</option>
         <option value="Department of Energy">Department of Energy </option>
@@ -177,7 +186,9 @@ Washington D.C. (which retains only a non-voting member of congress) had the mos
 
 
 
-</select>
+</select>   
+<!-- <i class="fas fa-chevron-circle-down icon"></i> -->
+
 
 
 
@@ -199,7 +210,7 @@ Washington D.C. (which retains only a non-voting member of congress) had the mos
     <div class="agencyFlexItem">
         
         <h2 class= "agencySub"> Value of Contracts over $1M</h2>
-        <p id = "valContracts"class = "ban">calcontrst</p>
+        <p id = "valContracts" class = "ban">calcontrst</p>
 
     </div>   
 

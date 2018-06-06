@@ -142,8 +142,13 @@ font-family: "IBM Plex Sans", sans-serif;
 
 #initial {
 
-font-size: 1.5rem;
+font-size: .8rem;
+font-weight: 200;
 padding-top: 10%;
+font-family: "IBM Plex Sans", sans-serif;
+/*color: red;*/
+color: rgba(255,255,255,.5);
+/*margin-top: 5%;*/
 
 }
 
@@ -295,14 +300,17 @@ color: #333333;
 
 
 #inds {
-width: 80%;
+width: 40%;
 height: 50px;
 margin: 0 auto;
-left: 40%;
-display: block;
+/*left: 40%;*/
+/*display: inline;*/
 margin-top: 3%;
+display: block;
+
 /*padding-top: 400px;*/
 }
+
 
 
 
@@ -466,8 +474,8 @@ span.darkText{
 #spread{
         /*text-align: right;*/
 margin: auto;
-padding-left: 10%;
-width: auto;
+/*padding-left: 10%;*/
+width: 50%;
 /*border: dashed red;*/
 
 }
@@ -808,10 +816,65 @@ left: 0%;
     font-weight: 800;
     /*display: inline;*/
     padding-left: 10%;
+    margin-bottom: 2px;
+    margin-top: 15px;
+        transition: all .5s ease;
+
+    /*margin: 1%;*/
+
+
+
+}
+
+
+@media only screen and (max-width: 600px) {
+ 
+
+.sidePanel p {
+
+    font-family: "Signika", sans-serif;
+        /*font-family: "IBM Plex Mono", sans-serif;*/
+    font-size: 1.2rem;
+    font-weight: 800;
+    /*display: inline;*/
+    padding-left: 10%;
     margin-bottom: 4px;
         transition: all .5s ease;
 
     /*margin: 1%;*/
+
+
+
+}
+
+
+.center {
+
+margin: auto;
+width: 90%;
+font-family: "IBM Plex Sans", sans-serif;
+font-family: "Fira Sans", sans-serif;
+font-weight: thin;
+/*font-family: "IBM Plex Serif";*/
+/*font-weight: 400;*/
+font-size: 1.3rem;
+color: whitesmoke;
+margin-top: 2%;
+margin-bottom: 3%;
+margin-left: 3%;
+margin-right: 3%;
+font-weight: 200;
+padding-bottom: 2%;
+}
+
+
+
+.ban{
+font-size: 2rem;
+
+}
+
+
 
 
 
@@ -830,7 +893,11 @@ left: 0%;
   margin-bottom: 4px;
   display: inline;
   font-size: .8rem;
-border-bottom: 3px solid rgba(255,255,255,.8);
+border-bottom: 1.1px solid rgba(255,255,255,.8);
+color: rgba(255,255,255,.8);
+font-weight: 100;
+
+
 }
 
 .sidePanel h1 {
@@ -838,7 +905,7 @@ border-bottom: 3px solid rgba(255,255,255,.8);
 font-family: "Neuton", Serif;
 font-weight: 100;
 font-size: 3rem;
-margin-bottom: -5%;
+margin-bottom: -10%;
 padding: 2%;
   text-align: center;
 
@@ -849,7 +916,22 @@ border-color: rgba(255, 255, 255,.3);
 }
 
 
+.icon{
 
+
+    color: whitesmoke;
+    font-size: 2.2rem;
+}
+
+
+.iconSmall{
+
+
+    color: whitesmoke;
+    opacity: .5;
+    font-size: 1.4rem;
+transform: translateY(5px);
+}
 
 .panelFlex {
 
@@ -947,8 +1029,10 @@ margin: auto;
 
 .barAxis{
 
-        font-size: 10px;
+        font-size: 11px;
         fill: white;
+        fill: rgb(237, 237, 237);
+        background: pink;
         stroke-color: white;
     font-weight: 400;
     font-family: "Signika", sans-serif;
@@ -992,7 +1076,7 @@ margin: auto;
 
         font-size: 13px;
         /*padding-left: 50px;*/
-        color: white;
+        fill: whitesmoke;
     font-weight: 400;
     font-family: "IBM Plex Sans", sans-serif;
 
