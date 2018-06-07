@@ -574,7 +574,7 @@ barSvgG
   .attr("x", 180)
   .attr("y", 11)
   // .text("District's Top Five Contracting Departments")
-  .text(d=> `${district}'s Top Five Contracting Departments`)
+  .text(d=> `${district}'s Largest Contracting Departments`)
   // .text(d=> `${d[0].district}'s Top Five Contracting Departments")`)
   // .attr('class', "barAxis")
   .attr('class', "barAxisTitle")

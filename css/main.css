@@ -255,8 +255,9 @@ display: inline;
 
 .about {
 
-padding-top: 5%;
+padding-top: 3%;
 text-align: center;
+font-size: 1.7rem;
 
 }
 
@@ -673,6 +674,8 @@ color: white;
 .panel {
 
 background-color: whitesmoke;
+background-color: rgb(224, 223, 217);
+
         width: 100%;
         min-height: 100vh;
         margin:auto;
