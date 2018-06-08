@@ -1029,7 +1029,91 @@ console.log(dotX(500000000));
 
 ///////////PRODUCT DOT
 
+
+
+
+
+
+
 d3.csv("data/top100ProductOutput.csv", function(data3){
+
+
+//////tooltips
+
+
+
+
+     // tooltip mouseover event handler
+              var tipMouseover = function(d) {
+                  // var color = colorScale(d.manufacturer);
+                  var html1  = "Vendor Name: "+d.vendor_name + "<br/>" +
+                              "Dollars Obligated: $"+(parseInt(d.dollars_obligated).toLocaleString())+ "<br />"+
+                              "Description: "+d.description_of_contract_requirement;
+
+
+
+        var html1  = `<p class = "b">Vendor Name:</p>${d.vendor_name}
+                             <p class = "b">Dollars Obligated:</p> ${d.dollars_obligated} <br />
+                             <p class = "b">Description:</p> ${d.description_of_contract_requirement}`
+
+
+                    d3.select(this).attr("stroke-width", 1);
+                    d3.select(this).attr("stroke", "white");
+                    // d3.select(this).attr("stroke", "red");
+
+
+              var visTool = document.getElementById('visTool');
+
+                  visTool.innerHTML = html1;
+
+                 
+                 var visD3 = d3.select("div#visTool")
+                  // .style("left", ()=>d3.select(this).attr("cx"))
+                  .style("top", ()=>(`${d3.event.pageY+10}px`))
+                  // .style("display", "absolute")
+                   .style("left", ()=>(`${d3.event.pageX}px`))
+                    .transition()
+                      .duration(100) // ms
+                      .style("opacity", .95)
+
+
+
+
+              };
+
+
+  var tipMouseout = function(d) {
+
+
+                var visD32 = d3.select("div#visTool")
+                  // .style("left", ()=>d3.select(this).attr("cx"))
+                  .style("top", ()=>(`${d3.event.pageY+10}px`))
+                  // .style("display", "absolute")
+                   .style("left", ()=>(`${d3.event.pageX}px`));
+
+
+                  visD32.transition()
+                      .duration(300) // ms
+                      .style("opacity", 0); 
+
+                          d3.select(this).attr("width", 6)
+                              d3.select(this).attr("stroke-width", 0);
+                    d3.select(this).attr("stroke", "none");
+
+
+// console.log("were out!!!")
+
+              };
+
+
+
+
+//////////end tooltips
+
+
+
+
+
 
 
 data3.forEach(function (d){
@@ -1090,10 +1174,12 @@ vendorDotsvg.selectAll('circle')
     return d.beltwayMetro == "inBeltway" ? "red" : "lightblue"
 
   })
+   .on("mouseover", tipMouseover)
+    .on("mouseout", tipMouseout)
   .transition()
   .delay((d,i)=>i*20)
     .attr("x", d=> dotX(d.dollars_obligated))
-;
+     
 
 vendorDotsvg.append('text')
     

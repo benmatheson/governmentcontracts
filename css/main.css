@@ -152,6 +152,20 @@ color: rgba(255,255,255,.5);
 
 }
 
+#initialLower {
+font-size: .9rem;
+font-weight: 200;
+padding-left: 5%;
+font-family: "IBM Plex Sans", sans-serif;
+/*color: red;*/
+color: rgba(255,255,255,.5);
+/*margin-top: 5%;*/
+text-align: center;
+padding-top: 1%;
+
+
+}
+
 #beltPercent{
 
     background-color: white;
@@ -181,7 +195,7 @@ padding-bottom: 2%;
     text-decoration: none;
     border-bottom: 3px solid black;
 /*font-weight: bold;*/
-font-color: black;
+color: black;
 font-weight: 400;
 transition: ease .1s
 
@@ -206,11 +220,36 @@ font-weight: bold;
 
 }
 
+#visTool {
+
+/*eight: 40px;*/
+width: 22%;
+margin:auto;
+/*border: dashed lightgray 1px;*/
+padding: 1%;
+ position: absolute;
+
+/* left: 50%;
+top: 50%;*/
+z-index: 99;
+/*margin-top: -18%;*/
+/*margin-bottom: 40%;*/
+font-family: "IBM Plex Sans", sans-serif;
+font-size: .7em;
+font-weight: 300;
+padding-left: 1%;
+background-color: whitesmoke;
+opacity: 0;
+border-radius: 5px;
+
+
+
+}
 
 
 .intro a {
 
-font-color: whitesmoke;
+color: whitesmoke;
     border-bottom: 3px solid white;
 
 
@@ -484,7 +523,7 @@ width: 50%;
 
 h1.darkText {
 
-        display: inline;
+        /*display: inline;*/
         text-align: center;
         margin:auto;
 
@@ -1085,6 +1124,12 @@ margin: auto;
 
 }
 
+.b {
+font-weight: bold;
+
+
+}
+
 .annoDarkRect{
 
         font-size: 15px;
@@ -1131,6 +1176,101 @@ margin: auto;
 margin: 0;
 
 }
+
+
+
+.keyDiv {
+
+position: absolute;
+position: absolute;
+bottom: 22vh;
+right: 10%;
+
+/*    position: relative;
+    display: inline;*/
+    z-index: 100;
+    /*border: dashed gray;*/
+    /*margin:auto;*/
+    width: 10%;
+    min-height: 1vh;
+    /*background-color:rgba(33,33,33,.3 );*/
+    background: linear-gradient(to right, #453B51, #CFC1FE);
+/*
+    color:rgba(0,0,0,.8);
+    background-color: rgba(255,255,255,.8);
+*/
+
+    font-weight: 900;
+    font-family: "Signika", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+    line-height: 100%;
+    border-radius: 4px;
+    padding: .11%;
+    /*margin: 2px;*/
+    font-size: 1rem;
+  /*  transition: all .5s ease;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.2);
+    /*text-align: center;*/
+    display: flex;*/
+
+
+
+}
+
+.keyText {
+
+
+position: absolute;
+bottom: 24vh;
+right: 10%;
+
+/*    position: relative;
+    display: inline;*/
+    z-index: 100;
+    /*border: dashed gray;*/
+    /*margin:auto;*/
+    width: 12%;
+    min-height: 1vh;
+    /*background-color:rgba(33,33,33,.3 );*/
+    /*background: linear-gradient(to right, #453B51, #CFC1FE);*/
+/*
+    color:rgba(0,0,0,.8);
+    background-color: rgba(255,255,255,.8);
+*/text-align:justify;
+    text-align-last: justify;
+
+width: 10%;
+
+    font-weight: 400;
+    font-family: "Signika", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+    line-height: 100%;
+    border-radius: 4px;
+    padding-left: 100px;
+    color: white;
+    font-style: italic;
+    /*display: block;*/
+    /*text-align: justify;*/
+    /*align:justify;*/
+    /*margin: 2px;*/
+    font-size: .8rem;
+  /*  transition: all .5s ease;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.2);
+    /*text-align: center;*/
+    /*display: flex;*
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
