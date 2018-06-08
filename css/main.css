@@ -247,6 +247,18 @@ border-radius: 5px;
 }
 
 
+#typed1{
+
+font-family: "IBM Plex Sans", sans-serif;
+font-size: 3rem;
+margin: 0;
+width: 50%;
+font-weight: 800;
+padding-left: 1%;
+color: whitesmoke;
+
+}
+
 .intro a {
 
 color: whitesmoke;
@@ -396,11 +408,11 @@ width: 70%;
 
 from {
 
-filter: hue-rotate(0deg);
-filter: saturate(0%);
-filter: blur(10px);
-opacity: .1;
-
+/*filter: hue-rotate(0deg) saturate(100%) blur(50px);*/
+    /*background: linear-gradient(to right, #453B51, #CFC1FE);*/
+opacity: 0;
+filter: drop-shadow(-1000px 0px 17px lightblue)  drop-shadow( -300px 0px 14px lightyellow) drop-shadow( -500px 0px 100px purple) drop-shadow( 500px 0px 30px lightgreen);
+/*width: 60%;*/
     /*width: 30%;*/
 
 }
@@ -408,10 +420,14 @@ opacity: .1;
 to{
 
 
-filter: hue-rotate(180deg);
-filter: saturate(100%);
-filter: blur(0px);
-opacity: .7;
+/*filter: drop-shadow(0px 0px 2px lightblue);*/
+opacity:.7;
+
+filter: drop-shadow(0px 0px 0px lightblue)  drop-shadow( 0px 0px 0px lightyellow) drop-shadow( 0px 0px 0px pink) drop-shadow( 0px 0px 0px lightgreen);
+
+/*width: 40%;*/
+    /*background: linear-gradient(to right, red, #CFC1FE);*/
+
 
     /*width: 40%;*/
 
@@ -422,6 +438,15 @@ opacity: .7;
 }
 
 
+#imgCont{
+
+
+      /*background-blend-mode: darken;*/
+      /*mix-blend-mode: darken;*/
+
+
+}
+
 img.centerMin {
 /**/
 margin-top: 4%;
@@ -429,15 +454,21 @@ margin-top: 4%;
     width: 40%;
     /*position: absolute;*/
     /*animation: imgAni, 2s;*/
+    overflow: hidden;
 
-      animation-name: imgAni;
-    animation-duration: 2s;
-    /*animation-direction: initial;;*/
+   opacity: .7;
+    /*animation-direction: initial;*/
     animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+       animation-name: imgAni;
+    animation-duration: 3s;
+
+/*mix-blend-mode: difference;*/
+
+    /*background: linear-gradient(to top, #333333, black);*/
 
 
-
-    /*filter: hue-rotate(80deg);*/
+    filter: hue-rotate(-180deg);
         /*filter: invert(80%);*/
        /*mix-blend-mode: darken;*/
 
