@@ -4,6 +4,7 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.6/typed.min.js"></script>
 
         <meta charset="utf-8">
+        <meta content="no-cache">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title></title>
         <meta name="description" content="">
@@ -15,21 +16,13 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/d3/d3.min.js"></script>
-        <script type="text/javascript" src="data/top5Contracts.json"></script>
-        <script type="text/javascript" src="data/top5Agency.json"></script>
-                <script src="js/vendor/ScrollMagic.min.js"></script>
-
-<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
-
 
 
 
                 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
 
-                <!-- <script src="js/vendor/d3/d3.min.js"></script> -->
- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
 
+      
 
 
 
@@ -137,7 +130,7 @@ Meanwhile, Virginia's <a href="https://en.wikipedia.org/wiki/Virginia%27s_8th_co
 <br /> <br /> 
 
 
-Washington D.C. (which retains only a non-voting member of congress) had the most million-plus dollar contracts: 4,206. On the opposite end of the spectrum, 34 districts hosted 10 or fewer million-dollar contracts. Of the top 10 districts by count, eight  are located in Virginia or Maryland, or D.C. 
+Washington D.C. (which retains only a non-voting member of congress) hosted the highest count of million-plus dollar contracts: 4,206. But across the country, 34 congressional districts were home to 10 or fewer million-dollar contracts. Of the top 10 districts by count, eight  are located in Virginia or Maryland, or D.C. 
 
 <!-- <i class="fas fa-chevron-circle-down icon"></i> -->
 
@@ -145,7 +138,7 @@ Washington D.C. (which retains only a non-voting member of congress) had the mos
 </div>
 <div id="spread"><h1 class="subHeader darkText inl"> Explore by Agency</h1>
 
-<span class="subSub darkText">  Select an agency to explore its contracts. ⤵</span>
+<span class="subSub darkText">  Select an agency to explore its contracts.<span id="arrow"> ⤵</span></span>
 
 </div>
 
@@ -390,7 +383,7 @@ The government spends hundreds of millions of dollars to contract out <a href="h
 <div class="panel dark">
     <h1 class="subHeader darkText"> Major Contracting Products </h1>
 
-<p id="initialLower"><i>Hover over each product to explore contracts ⤵</i>
+<p id="initialLower"><i>Hover over each product to explore contracts <span id="arrow">⤵</span></i>
 
 
 </p>
@@ -454,6 +447,11 @@ These data represent a portion of federal expenditures. The government spends mo
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script> -->
         <script src="js/plugins.js"></script>
+          <script src="js/vendor/d3/d3.min.js"></script>
+
+         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+                <script src="js/vendor/ScrollMagic.min.js"></script>
+
         <script src="js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/textures@1.2.0/dist/textures.js"></script>
 
@@ -472,6 +470,13 @@ These data represent a portion of federal expenditures. The government spends mo
         <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Neuton" rel="stylesheet">
+
+
+        <script type="text/javascript" src="data/top5Contracts.json"></script>
+        <script type="text/javascript" src="data/top5Agency.json"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+                <!-- <script src="js/vendor/d3/d3.min.js"></script> -->
 
     </body>
 </html>

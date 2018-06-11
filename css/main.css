@@ -468,7 +468,7 @@ margin-top: 4%;
     /*background: linear-gradient(to top, #333333, black);*/
 
 
-    filter: hue-rotate(-180deg);
+    /*filter: hue-rotate(-180deg);*/
         /*filter: invert(80%);*/
        /*mix-blend-mode: darken;*/
 
@@ -484,8 +484,8 @@ margin-top: 4%;
 .header {
 
 font-family: "IBM Plex Sans", sans-serif;
-font-family: "Signika", sans-serif;
-font-family: "Neuton", Serif;
+/*font-family: "Signika", sans-serif;*/
+/*font-family: "Neuton", Serif;*/
 
 /*position: absolute;*/
 /*top: 10%;*/
@@ -498,7 +498,7 @@ text-align: center;
 /*text-decoration-line: red;*/
 /*line-height: 80%;*/
 font-size: 6rem;
-font-weight: 400;
+font-weight: 900;
 margin: auto;
 min-width: 100%;
 /*background-blend-mode: difference;*/
@@ -618,6 +618,15 @@ margin-bottom: 2%;
 /*margin-top: 5%;*/
 
 /*color: whitesmoke;*/
+
+}
+
+#arrow {
+
+    font-size: 1.5rem;
+font-weight: bold;
+position: relative;
+top: 10px;
 
 }
 
@@ -900,83 +909,32 @@ left: 0%;
 }
 
 
-@media only screen and (max-width: 600px) {
- 
-
-.sidePanel p {
-
-    font-family: "Signika", sans-serif;
-        /*font-family: "IBM Plex Mono", sans-serif;*/
-    font-size: 1.2rem;
-    font-weight: 800;
-    /*display: inline;*/
-    padding-left: 10%;
-    margin-bottom: 4px;
-        transition: all .5s ease;
-
-    /*margin: 1%;*/
-
-
-
-}
-
-
-.center {
-
-margin: auto;
-width: 90%;
-font-family: "IBM Plex Sans", sans-serif;
-font-family: "Fira Sans", sans-serif;
-font-weight: thin;
-/*font-family: "IBM Plex Serif";*/
-/*font-weight: 400;*/
-font-size: 1.3rem;
-color: whitesmoke;
-margin-top: 2%;
-margin-bottom: 3%;
-margin-left: 3%;
-margin-right: 3%;
-font-weight: 200;
-padding-bottom: 2%;
-}
-
-
-
-.ban{
-font-size: 2rem;
-
-}
-
-
-
-
-
-}
-
-
-.sidePanel p.small {
-
-    font-size: .8rem;
-    font-weight: 300;
-
-}
-
 .sidePanel h4 {
 
   margin-bottom: 4px;
   display: inline;
-  font-size: .8rem;
-border-bottom: 1.1px solid rgba(255,255,255,.8);
+  font-size: .9rem;
+border-bottom: .5px solid rgba(255,255,255,.8);
 color: rgba(255,255,255,.8);
-font-weight: 100;
+font-weight: 800;
+line-height: 20%;
 
+
+}
+
+.sidePanel p.small {
+
+    font-size: .8rem;
+    font-weight: 100;
 
 }
 
 .sidePanel h1 {
 
 font-family: "Neuton", Serif;
-font-weight: 100;
+font-family: "Fira Sans", sans-serif;
+font-family: "IBM Plex Sans", sans-serif;
+font-weight: 800;
 font-size: 3rem;
 margin-bottom: -10%;
 padding: 2%;
@@ -1536,3 +1494,215 @@ z-index: 100;
         page-break-after: avoid;
     }
 }
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+
+
+    .bottomPanel {
+
+opacity: 0;
+
+position: absolute;
+bottom: 0px;
+left: 40%;
+
+/*    position: relative;
+    display: inline;*/
+    z-index: 100;
+    /*border: dashed gray;*/
+    /*margin:auto;*/
+    width: 60%;
+    height: 18vh;
+    /*background-color:rgba(33,33,33,.3 );*/
+    color: whitesmoke;
+/*
+    color:rgba(0,0,0,.8);
+    background-color: rgba(255,255,255,.8);
+*/
+
+    font-weight: 900;
+    font-family: "Signika", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+
+    line-height: 100%;
+    border-radius: 4px;
+    padding: 2%;
+    margin: 4px;
+    font-size: 1.3rem;
+    transition: all .5s ease;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.2);
+    /*text-align: center;*/
+    display: flex;
+
+}   
+ 
+
+.sidePanel p {
+
+    font-family: "Signika", sans-serif;
+        /*font-family: "IBM Plex Mono", sans-serif;*/
+    font-size: .9rem;
+    font-weight: 800;
+    /*display: inline;*/
+    padding-left: 10%;
+    margin-bottom: 4px;
+        transition: all .5s ease;
+
+    /*margin: 1%;*/
+
+
+
+}
+
+
+.center {
+
+margin: auto;
+width: 90%;
+font-family: "IBM Plex Sans", sans-serif;
+font-family: "Fira Sans", sans-serif;
+font-weight: thin;
+/*font-family: "IBM Plex Serif";*/
+/*font-weight: 400;*/
+font-size: 1.3rem;
+color: whitesmoke;
+margin-top: 2%;
+margin-bottom: 3%;
+margin-left: 6%;
+margin-right: 6%;
+font-weight: 200;
+padding-bottom: 2%;
+}
+
+
+
+.ban{
+font-size: 2rem;
+
+}
+
+
+
+
+.white {
+
+color: #333333;
+
+
+}
+
+.whiteText {
+
+color: #333333;
+font-weight: 900;
+
+}
+
+
+.about {
+
+padding: 3%;
+text-align: center;
+font-size: 1.7rem;
+
+}
+
+
+
+
+.sidePanel h4 {
+
+  margin-bottom: 1px;
+  display: inline;
+  font-size: .5rem;
+display:inline;
+/*border-bottom: 1.1px solid rgba(255,255,255,.8);*/
+color: rgba(255,255,255,.99);
+/*color: red;*/
+font-weight: 100;
+
+
+}
+
+.sidePanel h1 {
+
+font-family: "Neuton", sans-Serif;
+font-weight: 100;
+font-size: .5rem;
+margin-bottom: -10%;
+padding: 2%;
+  text-align: center;
+
+/*border-width: .1px;*/
+/*border-style: dotted;*/
+/*border-radius: 1px;*/
+/*border-color: rgba(255, 255, 255,.3);*/
+}
+
+
+
+
+.sidePanel {
+
+
+position: absolute;
+/*top: 0%;*/
+left: 0%;
+
+/*    position: relative;
+    display: inline;*/
+    z-index: 100;
+    /*border: dashed gray;*/
+    margin:auto;
+    width: 30%;
+    height: 99vh;
+    background-color:rgba(33,33,33,.7);
+    color: whitesmoke;
+/*
+    color:rgba(0,0,0,.8);
+    background-color: rgba(255,255,255,.8);
+*/
+
+    font-weight: 400;
+    font-family: "Signika", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+
+    line-height: 100%;
+    border-radius: 4px;
+    padding: 2%;
+    margin: 4px;
+    font-size: .8rem;
+    transition: all .5s ease;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.2);
+    /*text-align: center;*/
+
+}   
+
+.sidePanel p {
+
+    font-family: "Signika", sans-serif;
+        /*font-family: "IBM Plex Mono", sans-serif;*/
+    font-size: .8rem;
+    font-weight: 800;
+    /*display: inline;*/
+    padding-left: 10%;
+    margin-bottom: 2px;
+    margin-top: 15px;
+        transition: all .5s ease;
+
+    
+}
+    .sidePanel p.small {
+
+    font-size: .5rem;
+    font-weight: 300;
+
+}
+
+}
+
+
