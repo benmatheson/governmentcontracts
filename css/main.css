@@ -406,24 +406,29 @@ width: 70%;
 
 @keyframes imgAni {
 
-from {
+0% {
 
 /*filter: hue-rotate(0deg) saturate(100%) blur(50px);*/
     /*background: linear-gradient(to right, #453B51, #CFC1FE);*/
 opacity: 0;
-filter: drop-shadow(-1000px 0px 17px lightblue)  drop-shadow( -300px 0px 14px lightyellow) drop-shadow( -500px 0px 100px purple) drop-shadow( 500px 0px 30px lightgreen);
+
+filter: drop-shadow(-1000px 0px 17px lightblue)  drop-shadow( -300px 0px 14px lightyellow) drop-shadow( -500px 0px 100px purple) drop-shadow( 500px 0px 30px lightgreen)  drop-shadow( 300px 0px 14px yellow)  drop-shadow( -200px 0px 8px lightyellow) ;
+/*mix-blend-mode: multiply;*/
 /*width: 60%;*/
     /*width: 30%;*/
 
+
 }
 
-to{
+30%{
 
 
 /*filter: drop-shadow(0px 0px 2px lightblue);*/
-opacity:.7;
+opacity:.9;
+filter: drop-shadow(-10px 0px 6px lightblue)  drop-shadow( 30px 0px 4px lightyellow) drop-shadow( 50px 0px 10px pink) drop-shadow( -100px 0px 30px lightgreen);
 
-filter: drop-shadow(0px 0px 0px lightblue)  drop-shadow( 0px 0px 0px lightyellow) drop-shadow( 0px 0px 0px pink) drop-shadow( 0px 0px 0px lightgreen);
+
+/*filter: drop-shadow(0px 0px 0px lightblue)  drop-shadow( 0px 0px 0px lightyellow) drop-shadow( 0px 0px 0px pink) drop-shadow( 0px 0px 0px lightgreen);*/
 
 /*width: 40%;*/
     /*background: linear-gradient(to right, red, #CFC1FE);*/
@@ -434,6 +439,12 @@ filter: drop-shadow(0px 0px 0px lightblue)  drop-shadow( 0px 0px 0px lightyellow
 
 }
 
+
+100% {
+
+ opacity:1;   
+
+}
 
 }
 
@@ -456,7 +467,7 @@ margin-top: 4%;
     /*animation: imgAni, 2s;*/
     overflow: hidden;
 
-   opacity: .7;
+   opacity: .9;
     /*animation-direction: initial;*/
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
@@ -497,14 +508,23 @@ text-align: center;
 /*text-decoration: underline;*/
 /*text-decoration-line: red;*/
 /*line-height: 80%;*/
-font-size: 6rem;
+font-size: 5.8rem;
 font-weight: 900;
 margin: auto;
 min-width: 100%;
 /*background-blend-mode: difference;*/
 color: whitesmoke;
+/*border-bottom: 7.5px solid rgba(255,0,255,.2);*/
+/*border-bottom: 7.5px solid whitesmoke;*/
+/*border-left: 3.5px dashed rgba(0,255,255,.8);*/
+
 }
 
+.bord {
+border-bottom: 10.5px dashed #F2ED5C;
+
+
+}
 
 
 
@@ -516,12 +536,15 @@ left:12%;*/
 margin: auto;
 line-height: 100%;
 text-align: center;
-font-size: 2.4rem;
+font-size: 2.6rem;
 font-weight: 100;
 font-family: "IBM Plex Serif";
+/*font-family: "Fira Sans", sans-serif;*/
+/*font-family: "Signika", sans-serif;*/
 font-style: italic;
 margin-bottom: 2%;
 margin-top: 3%;
+width: 50%;
 
 /*color: whitesmoke;*/
 

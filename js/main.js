@@ -626,7 +626,9 @@ barSvgG
       //   }
   
 mapC.scrollZoom.disable();
-mapC.addControl(new mapboxgl.NavigationControl());
+// mapC.addControl(new mapboxgl.NavigationControl());
+// map.addControl(new mapboxgl.Navigation({position: 'top-left'}));
+
 
 
 
