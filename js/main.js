@@ -273,6 +273,11 @@ var controller = new ScrollMagic.Controller();
 
 scene1.reverse(false);
 scene1.setPin('#mapC');
+scene1.setClassToggle("#keyTextId", "vis");
+scene1.setClassToggle("#keyDivId", "vis");
+
+
+
 
 
   var scene2 = new ScrollMagic.Scene ({
@@ -345,6 +350,9 @@ mapC.on('mousemove', "gcC", function(e) {
 
 })
 
+
+
+
 mapC.on('mousemove', 'gcC', function(e) {
         // Change the cursor style as a UI indicator.
         mapC.getCanvas().style.cursor = 'pointer';
@@ -361,8 +369,19 @@ mapC.on('mousemove', 'gcC', function(e) {
         var value = e.features[0].properties.val;
         var numContracts = e.features[0].properties.gcpTotalContracts;
 
+var top5ContractsSorted;
 
-var top1 = top5Contracts.filter(d=>d.place_of_performance_congressional_district==district)[0]
+
+// console.log("TOP 5 CONTRACTEXTEND");
+// console.table(top5Contracts);
+
+var top1 = top5Contracts.filter(d=>d.place_of_performance_congressional_district==district);
+top1.sort(function (a,b){return b.dollars_obligated - a.dollars_obligated})
+top1 = top1[0]
+
+console.log("TOP1!");
+console.log(top1);
+
 var top1Vendor = top1.vendor_name.toLowerCase() ;
 var top1Agency = top1.mod_agency.substring(6) ;
 var top1VLocation = top1.vLocation ;
