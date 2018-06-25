@@ -271,10 +271,10 @@ var controller = new ScrollMagic.Controller();
     .on("start", function () {
         executeZoom()})
 
-scene1.reverse(false);
 scene1.setPin('#mapC');
 scene1.setClassToggle("#keyTextId", "vis");
 scene1.setClassToggle("#keyDivId", "vis");
+scene1.reverse(false);
 
 
 
@@ -1528,9 +1528,9 @@ const agencyTop5Product = agencyTop5.filter(d=>d.attribute=="product")
 const agencyTop5Vendor = agencyTop5.filter(d=>d.attribute=="vendor")
 const agencyTop5vLocation = agencyTop5.filter(d=>d.attribute=="vLocation")
 
-
-
+agencyTop5vLocation.sort(function (a,b){return b.pTotal-a.pTotal})
 agencyTop5Vendor.sort((a,b)=>b.pTotal-a.pTotal)
+agencyTop5Product.sort((a,b)=>b.pTotal-a.pTotal)
 
 
 
