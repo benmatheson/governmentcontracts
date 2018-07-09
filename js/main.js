@@ -43,7 +43,7 @@ const circleSvgG = circleSvg.append('g');
 const barSvg =  d3.select('#barDiv')
                         .append('svg')
                         .attr("width", 1000)
-                        .attr ("height", 130);
+                        .attr ("height", 140);
 
 
 const barSvgG = barSvg.append('g');
@@ -607,6 +607,13 @@ barSvgG
 
 
 
+barSvgG
+  .append('text')
+  .attr("x", 330)
+  .attr("y", 138)
+  // .text("District's Top Five Contracting Departments")
+  .text(d=> `Contract Value in Dollars`)
+  .attr('class', "barAxis")
 
 
 
@@ -1477,7 +1484,7 @@ var vendorCircleSvg = d3.select('#vendorCircle')
 d3.csv("data/agencySummaryPie.csv", function (agData){
 
 
-d3.csv("data/gcAgencyCombined.csv", function (ag5Data){
+d3.csv("data/gcAgencyCombined20180701.csv", function (ag5Data){
 
 
 
@@ -1792,6 +1799,13 @@ formatValue = d3.format(".2s");
 
 
 
+vbarSvgG
+  .append('text')
+  .attr("x", 590)
+  .attr("y", 165)
+  // .text("District's Top Five Contracting Departments")
+  .text(d=> `Contract Value in Dollars`)
+  .attr('class', "barAxis")
 
 
         //             .tickFormat(function(d) { return formatValue(d).replace('G', 'B'); }))
