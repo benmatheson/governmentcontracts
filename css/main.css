@@ -535,7 +535,7 @@ left:12%;*/
 margin: auto;
 line-height: 100%;
 text-align: center;
-font-size: 2.6rem;
+font-size: 2.3rem;
 font-weight: 100;
 font-family: "IBM Plex Serif";
 /*font-family: "Fira Sans", sans-serif;*/
@@ -1194,7 +1194,7 @@ margin: 0;
 
 .keyDiv {
 
-opacity: 0;
+/*opacity: 0;*/
 position: absolute;
 position: absolute;
 bottom: 22vh;
@@ -1202,7 +1202,7 @@ right: 10%;
 
 /*    position: relative;
     display: inline;*/
-    z-index: 100;
+    z-index: 110;
     /*border: dashed gray;*/
     /*margin:auto;*/
     width: 10%;
@@ -1240,7 +1240,7 @@ right: 10%;
 
 /*    position: relative;
     display: inline;*/
-    z-index: 100;
+    z-index: 109;
     /*border: dashed gray;*/
     /*margin:auto;*/
     width: 12%;
@@ -1271,7 +1271,7 @@ width: 10%;
   /*  transition: all .5s ease;
     box-shadow: 3px 3px 5px rgba(0,0,0,.2);
     /*text-align: center;*/
-    display: flex;
+    /*display: flex;*/
 
 
 

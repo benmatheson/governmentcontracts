@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+
+
+<html class="no-js"
+    lang>
+
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.6/typed.min.js" />
+
+    <meta charset="utf-8">
+
+    <meta content="no-cache">
+
+    <meta http-equiv="x-ua-compatible"
+        content="ie=edge">
+
+    <title />
+
+    <meta name="description"
+        content>
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+
+    <link rel="manifest"
+        href="site.webmanifest">
+
+    <link rel="apple-touch-icon"
+        href="icon.png">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet"
+        href="css/normalize.css">
+
+    <link rel="stylesheet"
+        href="css/main.css">
+
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- [if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif] -->
+    <!-- Add your site or application content here -->
+
+    <div class="panel dark">
+
+        <div id="imgCont">
+            <img class="centerMin"
+                src="img/dcWhite.png">
+
+        </div>
+        <!-- <img class="centerMin" src="img/dcWhite.png"> -->
+        <!-- <p id="typed1"></p> -->
+        <h1 class="header centerMin">
+            <span class="bord">Beltway</span>
+            <span class="bord">Billions</span>
+        </h1>
+        <h2 class="subHeader">Examine how Washington D.C. contractors compete for a half-trillion in federal dollars
+            <br>
+
+        </h2>
+
+        <p class="center intro">The government spends billions of dollars per year on a
+            <a href="https://www.gao.gov/assets/690/683273.pdf"
+                target="_blank">dizzying array
+            </a>of gear and specialized services: office furniture, cloud computing, breakfast cereal, and advanced weapons systems are among destinations of taxpayer funds.
+            <br>
+
+            <br>
+            Well-heeled industries have risen to meet this need in the form of Beltway companies–firms located within the Interstate 495
+            <a href="http://www.capital-beltway.com/Capital-Beltway-History.html"
+                target="_blank">Capital Beltway
+            </a>that wraps 64 miles around Washington D.C. through suburban Maryland and Virginia. It's big business to help the U.S. government administer benefits, fight fires, project military power, and otherwise carry out work across the globe.
+            <br>
+
+            <br>
+            This analysis, based on data published on
+            <a href="https://public.enigma.com/"
+                target="_blank">Enigma Public
+            </a>, explores the geography of the nearly
+            <a href="https://www.usaspending.gov/"
+                target="_blnk">half-trillion dollars
+            </a>of annual contract spending among beltway firms and the thousands of regional and small-town competitors.
+        </p>
+    </div>
+    <div id="mapTrigger" />
+
+
+    <div class="map"
+        id="mapC">
+
+        <div class="sidePanel">
+            <h1>Contracting Across America</h1>
+
+            <p id="initial">
+                <i>Hover over a district to explore federal contracting data</i>
+                <i class="fas fa-long-arrow-alt-right iconSmall" />
+
+            </p>
+
+            <div id="sidePanelText">
+                <div id="circleDiv" />
+
+            </div>
+        </div>
+
+        <div class="keyText"
+            id="keyTextId">←Fewest Most→
+        </div>
+
+        <div class="keyDiv"
+            id="keyDivId">
+        </div>
+
+        <div class="bottomPanel">
+            <div id="barDiv" />
+
+        </div>
+    </div>
+    <div id="mapWideTrigger" />
+
+
+    <div class="panel">
+        <h2 class="about center whiteText">A Patchwork American Landscape of Contracts
+        </h2>
+
+        <p class="center white">When the American government spends, it doesn't spend equally. In
+            <a href="https://stclairsville.com/mayors-greeting/"
+                target="_blank">Saint Clairsville, Ohio,
+            </a>the only contract in the entire Ohio 6th district worth more than $1 million is a Veterans Affairs Administration contract for
+            <a href="https://www.pittsburgh.va.gov/locations/belmont.asp">providing healthcare for a VA clinic.
+            </a>
+            <!-- Ohio River industrial towns -->
+            <!-- his district runs along the southeast side of the state, bordering Kentucky, West Virginia, and Pennsylvania. several older -->
+            <!-- Department of Veterans Affairs. -->
+            <!-- IGF::OT::IGF BELMONT COUNTY CBOC executed by VALOR HEALTHCARE, INC. -->
+            <!-- BROOKLYN RENOVATIONS _ RE-ROOF OF 2 STORY WING -->In the NY-16 district encompassing the Northern Bronx–home to the
+            <a href="https://en.wikipedia.org/wiki/New_York%27s_16th_congressional_district"
+                target="_blank">highest poverty rate
+            </a>of any congressional district in the nation–there are only two major contractsBoth are for pharmaceutical products: zinc pills and dalfampridine, a prescription to address multiple sclerosis patients.
+            <br>
+
+            <br>
+            Meanwhile, Virginia's
+            <a href="https://en.wikipedia.org/wiki/Virginia%27s_8th_congressional_district"
+                target="_blank">8th district
+            </a>boasts 3,134 million-dollar-plus contracts. The district includes Alexandria and Falls Church across its territory of Arlington County and Fairfax County.
+            <br>
+
+            <br>
+            Washington D.C. (which retains only a non-voting member of congress) hosted the highest count of million-dollar contracts: 4,206. But across the country, 34 districts were home to 10 or fewer million-dollar contracts. Of the 10 districts with the most contracts, eight are located in Virginia or Maryland, or D.C.
+            <!-- <i class="fas fa-chevron-circle-down icon"></i> -->
+        </p>
+    </div>
+
+    <div id="spread">
+        <h1 class="subHeader darkText inl">Explore by Agency</h1>
+        <span class="subSub darkText">Select an agency to explore its contracts.
+            <span id="arrow">⤵</span>
+        </span>
+    </div>
+
+    <div class="panel dark"
+        id="agencySelect">
+
+        <select id="inds">
+            <option value="Department of Defense">Department of Defense ⬍
+            </option>
+            <option id="next"
+                value="Department of the Interior">Department of the Interior
+            </option>
+            <option value="Department of Agriculture">Department of Agriculture
+            </option>
+            <option value="Department of Energy">Department of Energy</option>
+            <option value="Department of Health and Human Services">Department of Health and Human Services
+            </option>
+            <option value="Environmental Protection Agency">Environmental Protection Agency
+            </option>
+            <option value="General Services Administration">General Services Administration
+            </option>
+            <option value="Social Security Administration">Social Security Administration
+            </option>
+            <option value="National Aeronautics and Space Administration">National Aeronautics and Space Administration
+            </option>
+            <option value="U.S. Agency for International Development">U.S. Agency for International Development
+            </option>
+            <option value="Department of State">Department of State</option>
+            <option value="Securities and Exchange Commission">Securities and Exchange Commission
+            </option>
+            <option value="Executive Office of the President">Executive Office of the President
+            </option>
+            <option value="Federal Election Commission">Federal Election Commission
+            </option>
+            <option value="Department of the Treasury">Department of the Treasury
+            </option>
+            <option value="Department of Justice">Department of Justice</option>
+            <option value="Department of Education">Department of Education
+            </option>
+            <option value="Defense Nuclear Facilities Safety Board">Defense Nuclear Facilities Safety Board
+            </option>
+        </select>
+        <!-- <i class="fas fa-chevron-circle-down icon"></i> -->
+        <h2 class="agencyName"></h2>
+
+        <div class="agencyFlex">
+
+            <div class="agencyFlexItem">
+                <h2 class="agencySub">Number of Contracts over $1M</h2>
+                <p id="numContracts" class="ban">00</p>
+            </div>
+
+            <div class="agencyFlexItem">
+                <h2 class="agencySub">Value of Contracts over $1M</h2>
+                <p id="valContracts" class="ban">00</p>
+            </div>
+
+            <div class="agencyFlexItem">
+                <h2 class="agencySub">Percent Based
+                    <span class="pieHighlight">in Beltway</span>
+                </h2>
+                <div id="pie" />
+
+            </div>
+        </div>
+        <h2 id="agencyLess"
+            class="agencySub">Five Largest Vendors by Contract Value
+        </h2>
+        <div id="vbarDiv" />
+
+        <!-- <h2 class="agencySub"> Largest Vendors</h2>
+
+
+<div class="five">
+    
+        <span id="vendors5"></span>
+        <div id = vendorCircle></div>
+
+
+</div> -->
+
+        <div class="fiveContainer">
+            <!-- <div id="productTrigger"></div> -->
+
+            <div class="five">
+                <h2 class="agencySub">Largest Products or Service</h2>
+
+                <div id="products5">
+                    <div id="visTool" />
+
+                </div>
+            </div>
+
+            <div class="five">
+
+                <div id="vlocations5">
+                    <h2 class="agencySub">Largest Vendor Locations</h2>
+                </div>
+            </div>
+        </div>
+        <!-- </div>
+
+</div> -->
+        <!-- <div class="panel">
+    <h1> Five Largest Vendors (beltway:purple, non-beltway orange)</h1>
+<div id="vendorDot1"></div>
+<div id="vendorDot2"></div>
+<div id="vendorDot3"></div>
+<div id="vendorDot4"></div>
+<div id="vendorDot5"></div>
+
+
+</div> -->
+        <!-- <div class= "map" id="map0">
+
+    <h1 class="mapHeader"> Contract Size by Agency</h1>
+
+
+
+ <div class="buttonFlex">
+<div class="deptButton" onclick="toggleDotStyle('mapbox://styles/benmatheson/cjhebfhpm2se32rozggixu3np')">Department of Homeland Security</div>
+<div class="deptButton" onclick="toggleDotStyle('mapbox://styles/benmatheson/cjhebfbj02t7z2rs4ewk2kylh')">Department of Veterans Affairs</div>
+
+
+
+<div class="deptButton" onclick="toggleDotStyle('mapbox://styles/benmatheson/cjhcu2hpg1bhd2spnlx6sdxeo')">Department of Defense</div>
+
+</div> -->
+        <!-- </div> -->
+        <!-- <div class= "map" id="map1">
+        <h1 class="mapHeader"> Vendor Location and Work <br />Performace Networks by Agency</h1>
+
+ 
+ <div class="buttonFlex">
+<div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhdzkp2p2gld2sp4d2syfvld')">Department of the Interior</div>
+<div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhe0d4xe2h652srsc44e3avt')">Department of Energy</div>
+
+
+
+<div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhe0ml0k2ine2sqciajtp5lp')">Department of Agriculture</div>
+<div class="deptButton" onclick="toggleStyle('mapbox://styles/benmatheson/cjhcx9p8f1gmp2srs3jzhgcu3')">Department of the Navy</div>
+</div> -->
+        <!-- <div class="dropdown">
+  <button class="dropbtn">Agency</button>
+  <div class="dropdown-content">
+    <a href="#">Navy</a>
+    <a href="#">Department of Interior</a>
+    <a href="#">Department of Agriculture</a>
+    <a href="#">Energy</a> 
+  
+  </div>
+
+
+
+
+
+</div> -->
+        <!-- </div> -->
+
+        <div class="panel">
+            <h2 class="about center whiteText">A Magnifying Glass on Spending
+            </h2>
+
+            <p class="center white">As part of the public record, government contracts give a granular survey of the priorities of Congress and the President that escape news coverage. For every program, such as the trillion-dollar
+                <a href="https://en.wikipedia.org/wiki/Lockheed_Martin_F-35_Lightning_II"
+                    target="_blank">F-35 fighter
+                </a>that has captured media attention, there are countless billion-dollar healthcare, IT, or administrative deals that deserve public scrutiny.
+                <br>
+
+                <br>
+                The single most lucrative contract action in the 2016 data awards nearly $3.3 billion to the Electric Boat Corporation in Groton, Connecticut, for several
+                <a target="_blank"
+                    href="http://www.navy.mil/navydata/fact_print.asp?cid=4100&tid=100&ct=4&page=1">Virginia-class submarine hulls.
+                </a>Those vessels include the "Montana", "New Jersey", "Hyman G. Rickover", and eight other submarines. The nuclear-powered submarines cost $2.68 billion per unit.
+                <br>
+
+                <br>
+                We trust contractors with our deepest intelligence and security information. While the Navy's Naval Undersea Warfare Center didn't disclose the contractor that
+                <a target="_"blank""
+                    href="https://www.washingtonpost.com/world/national-security/china-hacked-a-navy-contractor-and-secured-a-trove-of-highly-sensitive-data-on-submarine-warfare/2018/06/08/6cc396fa-68e6-11e8-bea7-c8eb28bc52b1_story.html?utm_term=.8d2e7eb11032">fell victim to Chinese hackers
+                </a>this year and lost "secret plans to develop a supersonic anti-ship missile," this contracting database shows four multi-million dollar contracts related to the group's technical and enterprise infrastructure needs. And
+                <a href="https://en.wikipedia.org/wiki/Edward_Snowden"
+                    target="_"blank"">Edward Snowden
+                </a>didn't directly work for the NSA, but rather was a contractor for Booz Allen Hamilton, which maintains 861 large contracts in the 2016 spending data.
+                <br>
+
+                <br>
+                And we spend hundreds of millions of dollars to contract out
+
+                <a href="https://www.vanityfair.com/news/2017/07/department-of-energy-risks-michael-lewis"
+                    target="_blank">major Department of Energy laboratory operations,
+                </a>such as Battelle Energy Alliance, LLC's contract for operations at
+
+                <a target="_blank"
+                    href="https://www.inl.gov/about-inl/general-information/organization/
+">Idaho National Laboratory
+                </a>.
+                <br>
+
+                <br>
+
+            </p>
+        </div>
+        <div id="productTrigger" />
+
+
+        <div class="panel dark">
+            <h1 class="subHeader darkText">Major Contracting Products</h1>
+
+            <p id="initialLower">
+                <i>Hover over each product to explore contracts
+                    <span id="arrow">⤵</span>
+                </i>
+            </p>
+
+            <div class="colorCont">
+                <span class="bway">beltway-based</span>
+                <span class="nonBway">non-beltway-based</span>
+            </div>
+            <div id="productDot1" />
+
+            <div id="productDot2" />
+
+            <div id="productDot3" />
+
+            <div id="productDot4" />
+
+            <div id="productDot5" />
+
+            <div id="productDot6" />
+
+            <div id="productDot7" />
+
+            <div id="productDot8" />
+
+            <div id="productDot9" />
+
+        </div>
+        <!-- <div class="panel">
+    
+    <p class="center white">a long section about methedology</p>
+
+</div> -->
+
+        <div id="beltPercent">
+        </div>
+
+        <div id="beltCircle">
+        </div>
+
+        <div class="panel">
+            <h2 class="about center whiteText">About</h2>
+
+            <p class="center white">This analysis uses
+                <a target="_blank"
+                    href="https://www.usaspending.gov/#/">USA Spending
+                </a>data published on
+                <a target="_blank"
+                    href="https://public.enigma.com/">Enigma Public.
+                </a>It includes 2016 (the latest year full data is available) federal government contracts greater than $1 million that were awarded to US-based companies and executed in the United States. Beltway includes cities with a geographic center in the Washington-Arlington-Alexandria, DC-VA-MD-WV Metropolitan Statistical Area. Data were downloaded in May, 2018.
+                <br>
+
+                <br>
+                These data represent a portion of federal expenditures. The government spends money in a number of ways including contracting, grants, credit card purchases, direct transfers, and cooperative agreements.
+                <br>
+
+                <br>
+                Analysis and visualization by
+                <a target="_blank"
+                    href="https://benmatheson.github.io/">Ben Matheson.
+                </a>
+            </p>
+        </div>
+        <!-- <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script> -->
+        <script src="js/plugins.js" />
+
+        <script src="js/vendor/d3/d3.min.js" />
+
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js" />
+
+        <script src="js/vendor/ScrollMagic.min.js" />
+
+        <script src="js/main.js" />
+
+        <script src="https://cdn.jsdelivr.net/npm/textures@1.2.0/dist/textures.js" />
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <!-- <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i"
+            rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Signika"
+            rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Neuton"
+            rel="stylesheet">
+
+        <!-- <script type="text/javascript" src="data/top5Contracts.json"></script> -->
+        <script type="text/javascript"
+            src="data/top5Contracts.json" />
+
+        <script type="text/javascript"
+            src="data/top5Agency.json" />
+
+        <script defer
+            src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+            integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+            crossorigin="anonymous" />
+
+        <!-- <script src="js/vendor/d3/d3.min.js"></script> -->
+    </div>
+</body>
+</html>
